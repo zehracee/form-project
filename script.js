@@ -183,8 +183,11 @@ const abstracts = [
     }
 ];
 
-const itemsPerPage = 2; // Bir sayfada gösterilecek abstract sayısı
+const itemsPerPage = 4; // Bir sayfada gösterilecek abstract sayısı
 let currentPage = 1;
+
+// Değerlendirme verilerini saklamak için bir nesne
+let evaluationData = {};
 
 // Sayfa yükleme işlevi
 function loadPage(page) {
@@ -205,54 +208,33 @@ function loadPage(page) {
                 <div class="form-section">
                     <h2><span class="model">Model ${idx + 1} Tahmini: </span> ${model}</h2>
                     <div class="criteria-grid">
-                        <div>
-                            <label for="model${start + index + 1}-${idx + 1}-criterion1">Netlik</label>
-                            <select id="model${start + index + 1}-${idx + 1}-criterion1" name="model${start + index + 1}-${idx + 1}-criterion1" required>
-                                <option value="" disabled selected>Seçiniz</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="model${start + index + 1}-${idx + 1}-criterion2">Akıcılık</label>
-                            <select id="model${start + index + 1}-${idx + 1}-criterion2" name="model${start + index + 1}-${idx + 1}-criterion2" required>
-                                <option value="" disabled selected>Seçiniz</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="model${start + index + 1}-${idx + 1}-criterion3">Bağlamsal İlgi</label>
-                            <select id="model${start + index + 1}-${idx + 1}-criterion3" name="model${start + index + 1}-${idx + 1}-criterion3" required>
-                                <option value="" disabled selected>Seçiniz</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="model${start + index + 1}-${idx + 1}-criterion4">Tutarlılık</label>
-                            <select id="model${start + index + 1}-${idx + 1}-criterion4" name="model${start + index + 1}-${idx + 1}-criterion4" required>
-                                <option value="" disabled selected>Seçiniz</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
+                        ${['Netlik', 'Akıcılık', 'Bağlamsal İlgi', 'Tutarlılık'].map((criterion, criterionIdx) => {
+                            const fieldName = `model${start + index + 1}-${idx + 1}-criterion${criterionIdx + 1}`;
+                            const savedValue = evaluationData[fieldName] || ""; // Saklanan değeri yükle
+                            return `
+                                <div>
+                                    <label for="${fieldName}">${criterion}</label>
+                                    <select id="${fieldName}" name="${fieldName}" required>
+                                        <option value="" disabled ${!savedValue ? "selected" : ""}>Seçiniz</option>
+                                        ${[1, 2, 3, 4, 5].map(option => `
+                                            <option value="${option}" ${savedValue == option ? "selected" : ""}>${option}</option>
+                                        `).join("")}
+                                    </select>
+                                </div>
+                            `;
+                        }).join("")}
                     </div>
                 </div>
             `).join("")}
         `;
+
+        // Seçimlerin kaydedilmesi için event listener ekle
+        abstractDiv.querySelectorAll("select").forEach(select => {
+            select.addEventListener("change", (e) => {
+                evaluationData[e.target.name] = e.target.value;
+            });
+        });
+
         container.appendChild(abstractDiv);
     });
 
@@ -280,3 +262,20 @@ document.getElementById("next").addEventListener("click", () => {
 // İlk sayfa yüklemesi
 loadPage(currentPage);
 
+// Verileri gönderme
+document.getElementById("submit").addEventListener("click", () => {
+    console.log("Gönderilen Veriler:", evaluationData);
+
+    // Formspree veya başka bir API ile göndermek için verileri buradan işleyebilirsiniz.
+    // Örneğin, fetch ile POST isteği:
+    fetch("https://formspree.io/YOUR_FORM_ID", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(evaluationData),
+    }).then(response => {
+        if (response.ok) alert("Değerlendirmeler başarıyla gönderildi!");
+    }).catch(error => {
+        console.error("Hata:", error);
+        alert("Bir hata oluştu, lütfen tekrar deneyin.");
+    });
+});
