@@ -38,8 +38,9 @@ h1 {
 }
 
 h2 {
-    
-     color: #333;
+    color: #333;
+    font-size: 13px;
+    text-align: justify;
 }
 
 .criteria-grid {
