@@ -190,37 +190,29 @@ let answers = JSON.parse(localStorage.getItem("answers")) || {};
 function loadPage(page) {
     const container = document.getElementById("abstract-container");
     const pagination = document.getElementById("pagination");
-
-    // Eğer container veya pagination öğesi yoksa, hata ver
-    if (!container || !pagination) {
-        console.error("HTML öğeleri bulunamadı.");
-        return;
-    }
-
+    
     container.innerHTML = ""; // Mevcut içeriği temizle
     pagination.innerHTML = ""; // Sayfa numarası butonlarını temizle
-
+    
     const start = (page - 1) * itemsPerPage;
     const end = start + itemsPerPage;
-    const currentItems = abstracts.slice(start, end); // abstracts verisini alıyoruz
+    const currentItems = abstracts.slice(start, end);
 
     currentItems.forEach((item, index) => {
         const abstractDiv = document.createElement("div");
         abstractDiv.classList.add("abstract");
 
-        // Abstract metnini ekle
         const abstractText = document.createElement("p");
         abstractText.textContent = item.abstract;
         abstractDiv.appendChild(abstractText);
 
-        // Model seçeneklerini ekle
         const modelsList = document.createElement("ul");
         item.models.forEach((model, idx) => {
             const listItem = document.createElement("li");
             listItem.textContent = model;
             modelsList.appendChild(listItem);
 
-            // Puanlama dropdown'ı ekle
+            // Model değerlendirme dropdown'ı
             const select = document.createElement("select");
             select.id = `model${start + index + 1}-${idx + 1}-criterion4`;
             select.name = `model${start + index + 1}-${idx + 1}-criterion4`;
@@ -258,7 +250,7 @@ function loadPage(page) {
         const pageLink = document.createElement("button");
         pageLink.textContent = i;
         pageLink.onclick = function() {
-            currentPage = i; // Sayfa numarasını güncelle
+            currentPage = i;
             loadPage(currentPage);
         };
         pagination.appendChild(pageLink);
@@ -301,3 +293,4 @@ function saveAnswer(name, value) {
 window.onload = function() {
     loadPage(currentPage);
 };
+
