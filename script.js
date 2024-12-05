@@ -185,15 +185,10 @@ const abstracts = [
 
 const itemsPerPage = 4; // Bir sayfada gösterilecek abstract sayısı
 let currentPage = 1;
-
-// Değerlendirme verilerini saklamak için bir nesne
 let evaluationData = {};
-
-// Sayfa yükleme işlevi
 function loadPage(page) {
     const container = document.getElementById("abstract-container");
     container.innerHTML = ""; // Mevcut içeriği temizle
-
     const start = (page - 1) * itemsPerPage;
     const end = start + itemsPerPage;
     const currentItems = abstracts.slice(start, end);
@@ -201,7 +196,6 @@ function loadPage(page) {
     currentItems.forEach((item, index) => {
         const abstractDiv = document.createElement("div");
         abstractDiv.classList.add("abstract-section");
-
         abstractDiv.innerHTML = `
             <p class="abstract"><b>Abstract ${start + index + 1}:</b> ${item.abstract}</p>
             ${item.models.map((model, idx) => `
@@ -210,7 +204,7 @@ function loadPage(page) {
                     <div class="criteria-grid">
                         ${['Netlik', 'Akıcılık', 'Bağlamsal İlgi', 'Tutarlılık'].map((criterion, criterionIdx) => {
                             const fieldName = `model${start + index + 1}-${idx + 1}-criterion${criterionIdx + 1}`;
-                            const savedValue = evaluationData[fieldName] || ""; // Saklanan değeri yükle
+                            const savedValue = evaluationData[fieldName] || ""; 
                             return `
                                 <div>
                                     <label for="${fieldName}">${criterion}</label>
@@ -228,7 +222,7 @@ function loadPage(page) {
             `).join("")}
         `;
 
-        // Seçimlerin kaydedilmesi için event listener ekle
+       
         abstractDiv.querySelectorAll("select").forEach(select => {
             select.addEventListener("change", (e) => {
                 evaluationData[e.target.name] = e.target.value;
@@ -237,14 +231,11 @@ function loadPage(page) {
 
         container.appendChild(abstractDiv);
     });
-
-    // Sayfa kontrol butonlarını güncelle
     document.getElementById("page-info").innerText = `Sayfa ${page}`;
     document.getElementById("prev").disabled = page === 1;
     document.getElementById("next").disabled = page * itemsPerPage >= abstracts.length;
 }
 
-// Sayfa değişim kontrolleri
 document.getElementById("prev").addEventListener("click", () => {
     if (currentPage > 1) {
         currentPage--;
@@ -259,15 +250,14 @@ document.getElementById("next").addEventListener("click", () => {
     }
 });
 
-// İlk sayfa yüklemesi
+
 loadPage(currentPage);
 
-// Verileri gönderme
+
 document.getElementById("submit").addEventListener("click", () => {
     console.log("Gönderilen Veriler:", evaluationData);
 
-    // Formspree veya başka bir API ile göndermek için verileri buradan işleyebilirsiniz.
-    // Örneğin, fetch ile POST isteği:
+   
     fetch("https://formspree.io/f/mvgollgq", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
