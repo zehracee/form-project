@@ -182,8 +182,6 @@ const abstracts = [
         ]
     }
 ];
-
-
 const itemsPerPage = 4; // Bir sayfada gösterilecek abstract sayısı
 let currentPage = 1;
 let answers = JSON.parse(localStorage.getItem("answers")) || {};
@@ -192,7 +190,12 @@ let answers = JSON.parse(localStorage.getItem("answers")) || {};
 function loadPage(page) {
     const container = document.getElementById("abstract-container");
     const pagination = document.getElementById("pagination");
-    
+
+    if (!container || !pagination) {
+        console.error("HTML öğeleri bulunamadı.");
+        return;
+    }
+
     container.innerHTML = ""; // Mevcut içeriği temizle
     pagination.innerHTML = ""; // Sayfa numarası butonlarını temizle
 
