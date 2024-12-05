@@ -15,7 +15,7 @@
             Bu form, LLM modellerinin özeti kullanarak başlık üretmesindeki başarısını ölçmek amaçlı kullanılacaktır.
         </p>
 
-             <!-- Form Başlangıcı -->
+        <!-- Form Başlangıcı -->
         <form action="https://formspree.io/f/mvgollgq" method="POST">
             <!-- Kullanıcı Adı -->
             <div class="form-section">
@@ -42,8 +42,8 @@
                     <option value="5 yıldan fazla">5 yıldan fazla</option>
                 </select>
             </div>
-   <p class="abstract">Abstract: Bu çalışmada 1980-2020 yılları arasında Konya ilinin aylık yağış, nem ve sıcaklık verileri, buğday üretim miktarı ve buğday verimlilik verileri kullanılmıştır. Bu veriler kullanılarak Recurrent Neural Network (RNN) tabanlı algoritmalar olan (Gated Recurrent Units) GRU ve Long Short Term Memory (LSTM) yöntemleri ile buğday verimlilik tahmini yapılmıştır. Gerçekleştirilen GRU tabanlı model ile buğday verimliliği tahmin performansları incelendiğinde R2 puan, MSE, RMSE, MAE ve MAPE değerleri için sırasıyla 0.9550, 0.0059, 0.0280, 0.0623, 7.45 değerleri elde edilmiştir. RNN tabanlı bir diğer yöntem olan LSTM yöntemiyle elde edilen performans sonuçlarında ise R2 puan, MSE, RMSE, MAE ve MAPE değerleri için sırasıyla 0.9667, 0.0054, 0.0280, 0.0614, 7.33 değerleri elde edilmiştir. LSTM yöntemi, GRU yönteminden daha iyi sonuçlar vermesine rağmen LSTM yönteminin eğitim modelleme süresi GRU yönteminden daha fazla sürmüştür.</p>
 
+            <p class="abstract">Abstract: Bu çalışmada 1980-2020 yılları arasında Konya ilinin aylık yağış, nem ve sıcaklık verileri, buğday üretim miktarı ve buğday verimlilik verileri kullanılmıştır. Bu veriler kullanılarak Recurrent Neural Network (RNN) tabanlı algoritmalar olan (Gated Recurrent Units) GRU ve Long Short Term Memory (LSTM) yöntemleri ile buğday verimlilik tahmini yapılmıştır. Gerçekleştirilen GRU tabanlı model ile buğday verimliliği tahmin performansları incelendiğinde R2 puan, MSE, RMSE, MAE ve MAPE değerleri için sırasıyla 0.9550, 0.0059, 0.0280, 0.0623, 7.45 değerleri elde edilmiştir. RNN tabanlı bir diğer yöntem olan LSTM yöntemiyle elde edilen performans sonuçlarında ise R2 puan, MSE, RMSE, MAE ve MAPE değerleri için sırasıyla 0.9667, 0.0054, 0.0280, 0.0614, 7.33 değerleri elde edilmiştir. LSTM yöntemi, GRU yönteminden daha iyi sonuçlar vermesine rağmen LSTM yönteminin eğitim modelleme süresi GRU yönteminden daha fazla sürmüştür.</p>
 
             <!-- Model 1 -->
             <div class="form-section">
@@ -70,9 +70,9 @@
 
             <!-- Model 2 -->
             <div class="form-section">
-                <h2>Model 2 Tahmini:Konya İlinde Buğday Verimliliğinin Tahmini: GRU ve LSTM Ağları ile Zaman Serisi Analizi (1980-2020)</h2>
+                <h2>Model 2 Tahmini: Konya İlinde Buğday Verimliliğinin Tahmini: GRU ve LSTM Ağları ile Zaman Serisi Analizi (1980-2020)</h2>
                 <div class="criteria-grid">
-                     <div>
+                    <div>
                         <label for="model2-criterion1">Netlik</label>
                         <input type="number" id="model2-criterion1" name="model2-criterion1" min="1" max="5" required>
                     </div>
@@ -91,9 +91,54 @@
                 </div>
             </div>
 
+            <!-- Model 3 -->
+            <div class="form-section">
+                <h2>Model 3 Tahmini: Zaman Serisi Analizinde GRU ve LSTM'nin Performansı</h2>
+                <div class="criteria-grid">
+                    <div>
+                        <label for="model3-criterion1">Netlik</label>
+                        <input type="number" id="model3-criterion1" name="model3-criterion1" min="1" max="5" required>
+                    </div>
+                    <div>
+                        <label for="model3-criterion2">Akıcılık</label>
+                        <input type="number" id="model3-criterion2" name="model3-criterion2" min="1" max="5" required>
+                    </div>
+                    <div>
+                        <label for="model3-criterion3">Bağlamsal İlgi</label>
+                        <input type="number" id="model3-criterion3" name="model3-criterion3" min="1" max="5" required>
+                    </div>
+                    <div>
+                        <label for="model3-criterion4">Tutarlılık</label>
+                        <input type="number" id="model3-criterion4" name="model3-criterion4" min="1" max="5" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model 4 -->
+            <div class="form-section">
+                <h2>Model 4 Tahmini: Konya'da İklim Verilerinin Buğday Üretimi Üzerindeki Etkisi</h2>
+                <div class="criteria-grid">
+                    <div>
+                        <label for="model4-criterion1">Netlik</label>
+                        <input type="number" id="model4-criterion1" name="model4-criterion1" min="1" max="5" required>
+                    </div>
+                    <div>
+                        <label for="model4-criterion2">Akıcılık</label>
+                        <input type="number" id="model4-criterion2" name="model4-criterion2" min="1" max="5" required>
+                    </div>
+                    <div>
+                        <label for="model4-criterion3">Bağlamsal İlgi</label>
+                        <input type="number" id="model4-criterion3" name="model4-criterion3" min="1" max="5" required>
+                    </div>
+                    <div>
+                        <label for="model4-criterion4">Tutarlılık</label>
+                        <input type="number" id="model4-criterion4" name="model4-criterion4" min="1" max="5" required>
+                    </div>
+                </div>
+            </div>
+
             <!-- Formu Gönderme Butonu -->
             <button type="submit" class="submit-button">Gönder</button>
         </form>
     </div>
 </body>
-</html>
