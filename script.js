@@ -184,21 +184,22 @@ const abstracts = [
     }
 ];
 
- const itemsPerPage = 4;
+
+    const itemsPerPage = 4;
     let currentPage = 1;
     let answers = JSON.parse(localStorage.getItem("answers")) || {}; // Önceden kaydedilen cevaplar
 
     // Sayfa yükleme işlevi
     function loadPage(page) {
         const container = document.getElementById("abstract-container");
-        const pagination = document.getElementById("pagination");
-        
         container.innerHTML = ""; // Mevcut içeriği temizle
-        pagination.innerHTML = ""; // Sayfa numarası butonlarını temizle
 
         const start = (page - 1) * itemsPerPage;
         const end = start + itemsPerPage;
         const currentItems = abstracts.slice(start, end);
+
+        // Console log ile veriyi kontrol edelim
+        console.log(currentItems); 
 
         currentItems.forEach((item, index) => {
             const abstractDiv = document.createElement("div");
