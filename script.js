@@ -182,115 +182,101 @@ const abstracts = [
         ]
     }
 ];
-const itemsPerPage = 4; // Bir sayfada gösterilecek abstract sayısı
+
+const itemsPerPage = 2; // Bir sayfada gösterilecek abstract sayısı
 let currentPage = 1;
-let answers = JSON.parse(localStorage.getItem("answers")) || {};
 
 // Sayfa yükleme işlevi
 function loadPage(page) {
     const container = document.getElementById("abstract-container");
-    const pagination = document.getElementById("pagination");
-    
     container.innerHTML = ""; // Mevcut içeriği temizle
-    pagination.innerHTML = ""; // Sayfa numarası butonlarını temizle
-    
+
     const start = (page - 1) * itemsPerPage;
     const end = start + itemsPerPage;
     const currentItems = abstracts.slice(start, end);
 
     currentItems.forEach((item, index) => {
         const abstractDiv = document.createElement("div");
-        abstractDiv.classList.add("abstract");
+        abstractDiv.classList.add("abstract-section");
 
-        const abstractText = document.createElement("p");
-        abstractText.textContent = item.abstract;
-        abstractDiv.appendChild(abstractText);
-
-        const modelsList = document.createElement("ul");
-        item.models.forEach((model, idx) => {
-            const listItem = document.createElement("li");
-            listItem.textContent = model;
-            modelsList.appendChild(listItem);
-
-            // Model değerlendirme dropdown'ı
-            const select = document.createElement("select");
-            select.id = `model${start + index + 1}-${idx + 1}-criterion4`;
-            select.name = `model${start + index + 1}-${idx + 1}-criterion4`;
-            select.required = true;
-
-            const options = [1, 2, 3, 4, 5];
-            options.forEach(value => {
-                const option = document.createElement("option");
-                option.value = value;
-                option.textContent = value;
-                select.appendChild(option);
-            });
-
-            // Eğer daha önce kaydedilen bir cevap varsa, seçilen değeri yükle
-            const savedAnswer = answers[select.name];
-            if (savedAnswer) {
-                select.value = savedAnswer;
-            }
-
-            // Puanlama dropdown'ına input event listener ekleyerek cevapları kaydediyoruz
-            select.addEventListener("change", () => {
-                saveAnswer(select.name, select.value);
-            });
-
-            abstractDiv.appendChild(select);
-        });
-
-        abstractDiv.appendChild(modelsList);
+        abstractDiv.innerHTML = `
+            <p class="abstract"><b>Abstract ${start + index + 1}:</b> ${item.abstract}</p>
+            ${item.models.map((model, idx) => `
+                <div class="form-section">
+                    <h2><span class="model">Model ${idx + 1} Tahmini: </span> ${model}</h2>
+                    <div class="criteria-grid">
+                        <div>
+                            <label for="model${start + index + 1}-${idx + 1}-criterion1">Netlik</label>
+                            <select id="model${start + index + 1}-${idx + 1}-criterion1" name="model${start + index + 1}-${idx + 1}-criterion1" required>
+                                <option value="" disabled selected>Seçiniz</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="model${start + index + 1}-${idx + 1}-criterion2">Akıcılık</label>
+                            <select id="model${start + index + 1}-${idx + 1}-criterion2" name="model${start + index + 1}-${idx + 1}-criterion2" required>
+                                <option value="" disabled selected>Seçiniz</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="model${start + index + 1}-${idx + 1}-criterion3">Bağlamsal İlgi</label>
+                            <select id="model${start + index + 1}-${idx + 1}-criterion3" name="model${start + index + 1}-${idx + 1}-criterion3" required>
+                                <option value="" disabled selected>Seçiniz</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="model${start + index + 1}-${idx + 1}-criterion4">Tutarlılık</label>
+                            <select id="model${start + index + 1}-${idx + 1}-criterion4" name="model${start + index + 1}-${idx + 1}-criterion4" required>
+                                <option value="" disabled selected>Seçiniz</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            `).join("")}
+        `;
         container.appendChild(abstractDiv);
     });
 
-    // Sayfa numaralarını güncelle
-    const totalPages = Math.ceil(abstracts.length / itemsPerPage);
-    for (let i = 1; i <= totalPages; i++) {
-        const pageLink = document.createElement("button");
-        pageLink.textContent = i;
-        pageLink.onclick = function() {
-            currentPage = i;
-            loadPage(currentPage);
-        };
-        pagination.appendChild(pageLink);
+    // Sayfa kontrol butonlarını güncelle
+    document.getElementById("page-info").innerText = `Sayfa ${page}`;
+    document.getElementById("prev").disabled = page === 1;
+    document.getElementById("next").disabled = page * itemsPerPage >= abstracts.length;
+}
+
+// Sayfa değişim kontrolleri
+document.getElementById("prev").addEventListener("click", () => {
+    if (currentPage > 1) {
+        currentPage--;
+        loadPage(currentPage);
     }
+});
 
-    // Sayfa numarasını güncelle
-    const pageInfo = document.getElementById("page-info");
-    pageInfo.textContent = `Sayfa ${currentPage}`;
+document.getElementById("next").addEventListener("click", () => {
+    if (currentPage * itemsPerPage < abstracts.length) {
+        currentPage++;
+        loadPage(currentPage);
+    }
+});
 
-    // Sayfa geçiş butonlarının devre dışı bırakılması
-    const prevButton = document.getElementById("prev");
-    const nextButton = document.getElementById("next");
-
-    prevButton.disabled = currentPage === 1;
-    nextButton.disabled = currentPage === totalPages;
-
-    // Sayfa geçiş butonları
-    prevButton.onclick = function () {
-        if (currentPage > 1) {
-            currentPage--;
-            loadPage(currentPage);
-        }
-    };
-
-    nextButton.onclick = function () {
-        if (currentPage < totalPages) {
-            currentPage++;
-            loadPage(currentPage);
-        }
-    };
-}
-
-// Veriyi localStorage'a kaydet
-function saveAnswer(name, value) {
-    answers[name] = value;
-    localStorage.setItem("answers", JSON.stringify(answers));
-}
-
-// Sayfa yüklendiğinde ilk sayfayı yükle
-window.onload = function() {
-    loadPage(currentPage);
-};
+// İlk sayfa yüklemesi
+loadPage(currentPage);
 
