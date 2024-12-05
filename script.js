@@ -1,4 +1,4 @@
-// Abstract verileri
+// Tüm abstract'lar ve ilgili modeller
 const abstracts = [
     {
         abstract: "Eloksallı ve anodize edilmemiş Ti6Al4V ve Mg AZ31B biyomalzemelerinin korozyon davranışına ilişkin uzun vadeli bir araştırma, kontrollü koşullar altında gerçekleştirilmiştir. Ti6Al4V fosforik asit ve oksalik asit içinde anodize edilirken, Mg AZ31B fosforik asit ve potasyum hidroksit içinde 20V DC potansiyel uygulanarak anodize edilmiştir. %3 NaCl, fosfat tamponlu salin (PBS) ve deiyonize (DI) su çözeltilerine daldırılarak uzun süreli deneyler yapıldı. Korozyon hızı ve deseni elektrokimyasal analiz ile ölçülmüş ve anotlamanın malzeme yüzeyindeki doğal oksit tabakasını arttırdığı, korozyon hızını azalttığı ve biyomalzemenin ömrünü uzattığı gözlemlenmiştir.",
@@ -10,107 +10,111 @@ const abstracts = [
         ]
     },
     {
-        abstract: "Diğer örnek 2 bilgisi...",
+        abstract: "Eloksallı ve anodize edilmemiş Ti6Al4V ve Mg AZ31B biyomalzemelerinin korozyon davranışına ilişkin uzun vadeli bir araştırma, kontrollü koşullar altında gerçekleştirilmiştir. Ti6Al4V fosforik asit ve oksalik asit içinde anodize edilirken, Mg AZ31B fosforik asit ve potasyum hidroksit içinde 20V DC potansiyel uygulanarak anodize edilmiştir. %3 NaCl, fosfat tamponlu salin (PBS) ve deiyonize (DI) su çözeltilerine daldırılarak uzun süreli deneyler yapıldı. Korozyon hızı ve deseni elektrokimyasal analiz ile ölçülmüş ve anotlamanın malzeme yüzeyindeki doğal oksit tabakasını arttırdığı, korozyon hızını azalttığı ve biyomalzemenin ömrünü uzattığı gözlemlenmiştir.",
         models: [
-            "Model 1 Tahmini: Başlık 1",
-            "Model 2 Tahmini: Başlık 2",
-            "Model 3 Tahmini: Başlık 3",
-            "Model 4 Tahmini: Başlık 4"
+            "Model 1 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
+            "Model 2 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
+            "Model 3 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
+            "Model 4 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ"
         ]
     }
-    // Diğer abstract'lar buraya eklenebilir
+    // Diğer abstract'lar burada eklenebilir
 ];
 
-let pageIndex = 0; // Başlangıç sayfası
-const itemsPerPage = 1; // Her sayfada gösterilecek abstract sayısı
-const abstractContainer = document.getElementById("abstract-container");
-const pageInfo = document.getElementById("page-info");
-const prevButton = document.getElementById("prev");
-const nextButton = document.getElementById("next");
+// Sayfalama ayarları
+const itemsPerPage = 2; // Bir sayfada gösterilecek abstract sayısı
+let currentPage = 1;
 
-// Model değerlendirmelerini tutan değişken
-const modelRatings = {
-    // Her bir model için değerlendirilen puanları buraya ekleyeceğiz
-};
+// Sayfa yükleme işlevi
+function loadPage(page) {
+    const container = document.getElementById("abstract-container");
+    container.innerHTML = ""; // Mevcut içeriği temizle
 
-function loadPage() {
-    // Sayfada gösterilecek veriyi hesapla
-    const startIndex = pageIndex * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const currentItems = abstracts.slice(start, end);
 
-    // Abstract container'ı temizle
-    abstractContainer.innerHTML = ""; // Bu, eski içeriği temizler
+    currentItems.forEach((item, index) => {
+        const abstractDiv = document.createElement("div");
+        abstractDiv.classList.add("abstract-section");
 
-    // Bu sayfada yer alacak abstract'ları ekle
-    const abstractsToDisplay = abstracts.slice(startIndex, endIndex);
-    abstractsToDisplay.forEach((item, abstractIndex) => {
-        const abstractElement = document.createElement("div");
-        abstractElement.classList.add("abstract");
-
-        const abstractText = document.createElement("p");
-        abstractText.innerHTML = `<b>Abstract:</b> ${item.abstract}`;
-        abstractElement.appendChild(abstractText);
-
-        // Modelleri ekleyelim
-        item.models.forEach((model, modelIndex) => {
-            const modelElement = document.createElement("div");
-            modelElement.classList.add("model");
-            modelElement.innerHTML = `<b>Model ${modelIndex + 1} Tahmini:</b> ${model}`;
-
-            // Model için değerlendirme formu ekleyelim
-            const ratingElement = document.createElement("div");
-            ratingElement.classList.add("rating");
-
-            // Yıldızlar (1-5 arasında) için inputlar
-            const stars = [1, 2, 3, 4, 5];
-            stars.forEach(star => {
-                const starInput = document.createElement("input");
-                starInput.type = "radio";
-                starInput.name = `rating-${abstractIndex}-${modelIndex}`;
-                starInput.value = star;
-                starInput.id = `rating-${abstractIndex}-${modelIndex}-${star}`;
-                
-                // Değerlendirme yapılınca bu değerlere ulaşmak için event listener ekle
-                starInput.addEventListener("change", () => {
-                    modelRatings[`${abstractIndex}-${modelIndex}`] = star; // Model için puan kaydet
-                });
-
-                const starLabel = document.createElement("label");
-                starLabel.setAttribute("for", `rating-${abstractIndex}-${modelIndex}-${star}`);
-                starLabel.innerText = "★";
-                ratingElement.appendChild(starInput);
-                ratingElement.appendChild(starLabel);
-            });
-
-            modelElement.appendChild(ratingElement);
-            abstractElement.appendChild(modelElement);
-        });
-
-        abstractContainer.appendChild(abstractElement);
+        abstractDiv.innerHTML = `
+            <p class="abstract"><b>Abstract ${start + index + 1}:</b> ${item.abstract}</p>
+            ${item.models.map((model, idx) => `
+                <div class="form-section">
+                    <h2><span class="model">Model ${idx + 1} Tahmini: </span> ${model}</h2>
+                    <div class="criteria-grid">
+                        <div>
+                            <label for="model${start + index + 1}-${idx + 1}-criterion1">Netlik</label>
+                            <select id="model${start + index + 1}-${idx + 1}-criterion1" name="model${start + index + 1}-${idx + 1}-criterion1" required>
+                                <option value="" disabled selected>Seçiniz</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="model${start + index + 1}-${idx + 1}-criterion2">Akıcılık</label>
+                            <select id="model${start + index + 1}-${idx + 1}-criterion2" name="model${start + index + 1}-${idx + 1}-criterion2" required>
+                                <option value="" disabled selected>Seçiniz</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="model${start + index + 1}-${idx + 1}-criterion3">Bağlamsal İlgi</label>
+                            <select id="model${start + index + 1}-${idx + 1}-criterion3" name="model${start + index + 1}-${idx + 1}-criterion3" required>
+                                <option value="" disabled selected>Seçiniz</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="model${start + index + 1}-${idx + 1}-criterion4">Tutarlılık</label>
+                            <select id="model${start + index + 1}-${idx + 1}-criterion4" name="model${start + index + 1}-${idx + 1}-criterion4" required>
+                                <option value="" disabled selected>Seçiniz</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            `).join("")}
+        `;
+        container.appendChild(abstractDiv);
     });
 
-    // Sayfa bilgilerini güncelle
-    pageInfo.innerText = `Sayfa ${pageIndex + 1}`;
-
-    // Sayfalama butonlarını yönet
-    prevButton.disabled = pageIndex === 0;
-    nextButton.disabled = (pageIndex + 1) * itemsPerPage >= abstracts.length;
+    // Sayfa kontrol butonlarını güncelle
+    document.getElementById("page-info").innerText = `Sayfa ${page}`;
+    document.getElementById("prev").disabled = page === 1;
+    document.getElementById("next").disabled = page * itemsPerPage >= abstracts.length;
 }
 
-// Sayfalar arasında geçiş yapmak için butonlara tıklama işlevi
-prevButton.addEventListener("click", () => {
-    if (pageIndex > 0) {
-        pageIndex--;
-        loadPage();
+// Sayfa değişim kontrolleri
+document.getElementById("prev").addEventListener("click", () => {
+    if (currentPage > 1) {
+        currentPage--;
+        loadPage(currentPage);
     }
 });
 
-nextButton.addEventListener("click", () => {
-    if ((pageIndex + 1) * itemsPerPage < abstracts.length) {
-        pageIndex++;
-        loadPage();
+document.getElementById("next").addEventListener("click", () => {
+    if (currentPage * itemsPerPage < abstracts.length) {
+        currentPage++;
+        loadPage(currentPage);
     }
 });
 
-// Sayfayı yükle
-loadPage();
+// İlk sayfa yüklemesi
+loadPage(currentPage);
