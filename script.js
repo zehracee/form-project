@@ -183,19 +183,23 @@ const abstracts = [
     }
 ];
 
-const itemsPerPage = 4; // Bir sayfada gösterilecek abstract sayısı
+const itemsPerPage = 4; 
 let currentPage = 1;
+let answers = JSON.parse(localStorage.getItem("answers")) || {}; 
 
 // Sayfa yükleme işlevi
 function loadPage(page) {
     const container = document.getElementById("abstract-container");
-    container.innerHTML = ""; // Mevcut içeriği temizle
+    const pagination = document.getElementById("pagination");
+    
+    container.innerHTML = ""; 
+    pagination.innerHTML = ""; 
 
     const start = (page - 1) * itemsPerPage;
     const end = start + itemsPerPage;
     const currentItems = abstracts.slice(start, end);
 
-    currentItems.forEach(item => {
+    currentItems.forEach((item, index) => {
         const abstractDiv = document.createElement("div");
         abstractDiv.classList.add("abstract");
 
@@ -204,33 +208,72 @@ function loadPage(page) {
         abstractDiv.appendChild(abstractText);
 
         const modelsList = document.createElement("ul");
-        item.models.forEach(model => {
+        item.models.forEach((model, idx) => {
             const listItem = document.createElement("li");
             listItem.textContent = model;
             modelsList.appendChild(listItem);
         });
         abstractDiv.appendChild(modelsList);
 
+       
+        const input = document.createElement("input");
+        input.type = "text";
+        input.name = `abstract-${start + index}`;
+        input.value = answers[input.name] || ""; 
+        input.addEventListener("input", () => {
+            saveAnswer(input.name, input.value); 
+        });
+
+        abstractDiv.appendChild(input);
         container.appendChild(abstractDiv);
     });
 
-    // Sayfa numaralarını güncelle
-    const pagination = document.getElementById("pagination");
-    pagination.innerHTML = "";
-
+    
     const totalPages = Math.ceil(abstracts.length / itemsPerPage);
     for (let i = 1; i <= totalPages; i++) {
         const pageLink = document.createElement("button");
         pageLink.textContent = i;
-        pageLink.onclick = function() {
-            loadPage(i);
+        pageLink.onclick = function () {
+            loadPage(i); // Sayfayı değiştirme
         };
         pagination.appendChild(pageLink);
     }
+
+    
+    const pageInfo = document.getElementById("page-info");
+    pageInfo.textContent = `Sayfa ${currentPage}`;
+
+    
+    const prevButton = document.getElementById("prev");
+    const nextButton = document.getElementById("next");
+
+    prevButton.disabled = currentPage === 1;
+    nextButton.disabled = currentPage === totalPages;
+
+   
+    prevButton.onclick = function () {
+        if (currentPage > 1) {
+            currentPage--;
+            loadPage(currentPage);
+        }
+    };
+
+    nextButton.onclick = function () {
+        if (currentPage < totalPages) {
+            currentPage++;
+            loadPage(currentPage);
+        }
+    };
+}
+
+
+function saveAnswer(name, value) {
+    answers[name] = value;
+    localStorage.setItem("answers", JSON.stringify(answers));
 }
 
 // Sayfa yüklendiğinde ilk sayfayı yükle
-window.onload = function() {
+window.onload = function () {
     loadPage(currentPage);
 };
 
