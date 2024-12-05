@@ -268,7 +268,7 @@ document.getElementById("submit").addEventListener("click", () => {
 
     // Formspree veya başka bir API ile göndermek için verileri buradan işleyebilirsiniz.
     // Örneğin, fetch ile POST isteği:
-    fetch("https://formspree.io/YOUR_FORM_ID", {
+    fetch("https://formspree.io/f/mvgollgq", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(evaluationData),
