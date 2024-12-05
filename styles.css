@@ -19,6 +19,11 @@ h1 {
     font-size: 24px;
     color: #333;
 }
+.abstract-description{
+    color: #333;
+    font-size: 14px;
+    text-align: justify;
+}
 
 .abstract {
     font-size: 14px;
@@ -33,7 +38,7 @@ h1 {
 }
 
 h2 {
-    font-size: 16px;
+    
      color: #333;
 }
 
