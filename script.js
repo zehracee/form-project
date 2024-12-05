@@ -174,7 +174,7 @@ const abstracts = [
 ];
 
 
-const itemsPerPage = 3; 
+const itemsPerPage = 2; 
 let currentPage = 1;
 
 
