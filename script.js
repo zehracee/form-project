@@ -1,4 +1,4 @@
-
+// Tüm abstract'lar ve ilgili modeller
 const abstracts = [
     {
         abstract: "Eloksallı ve anodize edilmemiş Ti6Al4V ve Mg AZ31B biyomalzemelerinin korozyon davranışına ilişkin uzun vadeli bir araştırma, kontrollü koşullar altında gerçekleştirilmiştir. Ti6Al4V fosforik asit ve oksalik asit içinde anodize edilirken, Mg AZ31B fosforik asit ve potasyum hidroksit içinde 20V DC potansiyel uygulanarak anodize edilmiştir. %3 NaCl, fosfat tamponlu salin (PBS) ve deiyonize (DI) su çözeltilerine daldırılarak uzun süreli deneyler yapıldı. Korozyon hızı ve deseni elektrokimyasal analiz ile ölçülmüş ve anotlamanın malzeme yüzeyindeki doğal oksit tabakasını arttırdığı, korozyon hızını azalttığı ve biyomalzemenin ömrünü uzattığı gözlemlenmiştir.",
@@ -10,31 +10,6 @@ const abstracts = [
         ]
     },
     {
-        abstract: "A study about long-term corrosion behavior of anodized and non-anodized Ti6Al4V and MgAZ31B biomaterials was conducted under controlled conditions. By applying 20V DC potential, MgAZ31B alloys was anodized in phosphoric acid and potassium hydroxide while Ti6Al4V alloys was anodized in phosphoric acid and oxalic acid. Long-term experiments were carried out by immersing them in deionized (DI) water, 3% NaCl and phosphate-buffered saline (PBS) solutions. The corrosion rate and pattern were measured by electrochemical analysis. Also, as a result of anodization, the natural oxide layer was observed on the material surface, thus the corrosion rate is reduced and the life of the biomaterial has been improved.",
-        models: [
-            "Model 1 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 2 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 3 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 4 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE"
-        ]
-    },
-    abstract: "Eloksallı ve anodize edilmemiş Ti6Al4V ve Mg AZ31B biyomalzemelerinin korozyon davranışına ilişkin uzun vadeli bir araştırma, kontrollü koşullar altında gerçekleştirilmiştir. Ti6Al4V fosforik asit ve oksalik asit içinde anodize edilirken, Mg AZ31B fosforik asit ve potasyum hidroksit içinde 20V DC potansiyel uygulanarak anodize edilmiştir. %3 NaCl, fosfat tamponlu salin (PBS) ve deiyonize (DI) su çözeltilerine daldırılarak uzun süreli deneyler yapıldı. Korozyon hızı ve deseni elektrokimyasal analiz ile ölçülmüş ve anotlamanın malzeme yüzeyindeki doğal oksit tabakasını arttırdığı, korozyon hızını azalttığı ve biyomalzemenin ömrünü uzattığı gözlemlenmiştir.",
-        models: [
-            "Model 1 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 2 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 3 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 4 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ"
-        ]
-    },
-    {
-        abstract: "A study about long-term corrosion behavior of anodized and non-anodized Ti6Al4V and MgAZ31B biomaterials was conducted under controlled conditions. By applying 20V DC potential, MgAZ31B alloys was anodized in phosphoric acid and potassium hydroxide while Ti6Al4V alloys was anodized in phosphoric acid and oxalic acid. Long-term experiments were carried out by immersing them in deionized (DI) water, 3% NaCl and phosphate-buffered saline (PBS) solutions. The corrosion rate and pattern were measured by electrochemical analysis. Also, as a result of anodization, the natural oxide layer was observed on the material surface, thus the corrosion rate is reduced and the life of the biomaterial has been improved.",
-        models: [
-            "Model 1 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 2 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 3 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 4 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE"
-        ]
-    },
         abstract: "Eloksallı ve anodize edilmemiş Ti6Al4V ve Mg AZ31B biyomalzemelerinin korozyon davranışına ilişkin uzun vadeli bir araştırma, kontrollü koşullar altında gerçekleştirilmiştir. Ti6Al4V fosforik asit ve oksalik asit içinde anodize edilirken, Mg AZ31B fosforik asit ve potasyum hidroksit içinde 20V DC potansiyel uygulanarak anodize edilmiştir. %3 NaCl, fosfat tamponlu salin (PBS) ve deiyonize (DI) su çözeltilerine daldırılarak uzun süreli deneyler yapıldı. Korozyon hızı ve deseni elektrokimyasal analiz ile ölçülmüş ve anotlamanın malzeme yüzeyindeki doğal oksit tabakasını arttırdığı, korozyon hızını azalttığı ve biyomalzemenin ömrünü uzattığı gözlemlenmiştir.",
         models: [
             "Model 1 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
@@ -42,142 +17,15 @@ const abstracts = [
             "Model 3 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
             "Model 4 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ"
         ]
-    },
-    {
-        abstract: "A study about long-term corrosion behavior of anodized and non-anodized Ti6Al4V and MgAZ31B biomaterials was conducted under controlled conditions. By applying 20V DC potential, MgAZ31B alloys was anodized in phosphoric acid and potassium hydroxide while Ti6Al4V alloys was anodized in phosphoric acid and oxalic acid. Long-term experiments were carried out by immersing them in deionized (DI) water, 3% NaCl and phosphate-buffered saline (PBS) solutions. The corrosion rate and pattern were measured by electrochemical analysis. Also, as a result of anodization, the natural oxide layer was observed on the material surface, thus the corrosion rate is reduced and the life of the biomaterial has been improved.",
-        models: [
-            "Model 1 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 2 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 3 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 4 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE"
-        ]
-    },
-        abstract: "Eloksallı ve anodize edilmemiş Ti6Al4V ve Mg AZ31B biyomalzemelerinin korozyon davranışına ilişkin uzun vadeli bir araştırma, kontrollü koşullar altında gerçekleştirilmiştir. Ti6Al4V fosforik asit ve oksalik asit içinde anodize edilirken, Mg AZ31B fosforik asit ve potasyum hidroksit içinde 20V DC potansiyel uygulanarak anodize edilmiştir. %3 NaCl, fosfat tamponlu salin (PBS) ve deiyonize (DI) su çözeltilerine daldırılarak uzun süreli deneyler yapıldı. Korozyon hızı ve deseni elektrokimyasal analiz ile ölçülmüş ve anotlamanın malzeme yüzeyindeki doğal oksit tabakasını arttırdığı, korozyon hızını azalttığı ve biyomalzemenin ömrünü uzattığı gözlemlenmiştir.",
-        models: [
-            "Model 1 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 2 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 3 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 4 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ"
-        ]
-    },
-    {
-        abstract: "A study about long-term corrosion behavior of anodized and non-anodized Ti6Al4V and MgAZ31B biomaterials was conducted under controlled conditions. By applying 20V DC potential, MgAZ31B alloys was anodized in phosphoric acid and potassium hydroxide while Ti6Al4V alloys was anodized in phosphoric acid and oxalic acid. Long-term experiments were carried out by immersing them in deionized (DI) water, 3% NaCl and phosphate-buffered saline (PBS) solutions. The corrosion rate and pattern were measured by electrochemical analysis. Also, as a result of anodization, the natural oxide layer was observed on the material surface, thus the corrosion rate is reduced and the life of the biomaterial has been improved.",
-        models: [
-            "Model 1 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 2 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 3 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 4 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE"
-        ]
-    },
-        abstract: "Eloksallı ve anodize edilmemiş Ti6Al4V ve Mg AZ31B biyomalzemelerinin korozyon davranışına ilişkin uzun vadeli bir araştırma, kontrollü koşullar altında gerçekleştirilmiştir. Ti6Al4V fosforik asit ve oksalik asit içinde anodize edilirken, Mg AZ31B fosforik asit ve potasyum hidroksit içinde 20V DC potansiyel uygulanarak anodize edilmiştir. %3 NaCl, fosfat tamponlu salin (PBS) ve deiyonize (DI) su çözeltilerine daldırılarak uzun süreli deneyler yapıldı. Korozyon hızı ve deseni elektrokimyasal analiz ile ölçülmüş ve anotlamanın malzeme yüzeyindeki doğal oksit tabakasını arttırdığı, korozyon hızını azalttığı ve biyomalzemenin ömrünü uzattığı gözlemlenmiştir.",
-        models: [
-            "Model 1 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 2 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 3 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 4 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ"
-        ]
-    },
-    {
-        abstract: "A study about long-term corrosion behavior of anodized and non-anodized Ti6Al4V and MgAZ31B biomaterials was conducted under controlled conditions. By applying 20V DC potential, MgAZ31B alloys was anodized in phosphoric acid and potassium hydroxide while Ti6Al4V alloys was anodized in phosphoric acid and oxalic acid. Long-term experiments were carried out by immersing them in deionized (DI) water, 3% NaCl and phosphate-buffered saline (PBS) solutions. The corrosion rate and pattern were measured by electrochemical analysis. Also, as a result of anodization, the natural oxide layer was observed on the material surface, thus the corrosion rate is reduced and the life of the biomaterial has been improved.",
-        models: [
-            "Model 1 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 2 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 3 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 4 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE"
-        ]
-    },
-        abstract: "Eloksallı ve anodize edilmemiş Ti6Al4V ve Mg AZ31B biyomalzemelerinin korozyon davranışına ilişkin uzun vadeli bir araştırma, kontrollü koşullar altında gerçekleştirilmiştir. Ti6Al4V fosforik asit ve oksalik asit içinde anodize edilirken, Mg AZ31B fosforik asit ve potasyum hidroksit içinde 20V DC potansiyel uygulanarak anodize edilmiştir. %3 NaCl, fosfat tamponlu salin (PBS) ve deiyonize (DI) su çözeltilerine daldırılarak uzun süreli deneyler yapıldı. Korozyon hızı ve deseni elektrokimyasal analiz ile ölçülmüş ve anotlamanın malzeme yüzeyindeki doğal oksit tabakasını arttırdığı, korozyon hızını azalttığı ve biyomalzemenin ömrünü uzattığı gözlemlenmiştir.",
-        models: [
-            "Model 1 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 2 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 3 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 4 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ"
-        ]
-    },
-    {
-        abstract: "A study about long-term corrosion behavior of anodized and non-anodized Ti6Al4V and MgAZ31B biomaterials was conducted under controlled conditions. By applying 20V DC potential, MgAZ31B alloys was anodized in phosphoric acid and potassium hydroxide while Ti6Al4V alloys was anodized in phosphoric acid and oxalic acid. Long-term experiments were carried out by immersing them in deionized (DI) water, 3% NaCl and phosphate-buffered saline (PBS) solutions. The corrosion rate and pattern were measured by electrochemical analysis. Also, as a result of anodization, the natural oxide layer was observed on the material surface, thus the corrosion rate is reduced and the life of the biomaterial has been improved.",
-        models: [
-            "Model 1 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 2 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 3 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 4 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE"
-        ]
-    },
-        abstract: "Eloksallı ve anodize edilmemiş Ti6Al4V ve Mg AZ31B biyomalzemelerinin korozyon davranışına ilişkin uzun vadeli bir araştırma, kontrollü koşullar altında gerçekleştirilmiştir. Ti6Al4V fosforik asit ve oksalik asit içinde anodize edilirken, Mg AZ31B fosforik asit ve potasyum hidroksit içinde 20V DC potansiyel uygulanarak anodize edilmiştir. %3 NaCl, fosfat tamponlu salin (PBS) ve deiyonize (DI) su çözeltilerine daldırılarak uzun süreli deneyler yapıldı. Korozyon hızı ve deseni elektrokimyasal analiz ile ölçülmüş ve anotlamanın malzeme yüzeyindeki doğal oksit tabakasını arttırdığı, korozyon hızını azalttığı ve biyomalzemenin ömrünü uzattığı gözlemlenmiştir.",
-        models: [
-            "Model 1 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 2 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 3 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 4 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ"
-        ]
-    },
-    {
-        abstract: "A study about long-term corrosion behavior of anodized and non-anodized Ti6Al4V and MgAZ31B biomaterials was conducted under controlled conditions. By applying 20V DC potential, MgAZ31B alloys was anodized in phosphoric acid and potassium hydroxide while Ti6Al4V alloys was anodized in phosphoric acid and oxalic acid. Long-term experiments were carried out by immersing them in deionized (DI) water, 3% NaCl and phosphate-buffered saline (PBS) solutions. The corrosion rate and pattern were measured by electrochemical analysis. Also, as a result of anodization, the natural oxide layer was observed on the material surface, thus the corrosion rate is reduced and the life of the biomaterial has been improved.",
-        models: [
-            "Model 1 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 2 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 3 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 4 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE"
-        ]
-    },
-        abstract: "Eloksallı ve anodize edilmemiş Ti6Al4V ve Mg AZ31B biyomalzemelerinin korozyon davranışına ilişkin uzun vadeli bir araştırma, kontrollü koşullar altında gerçekleştirilmiştir. Ti6Al4V fosforik asit ve oksalik asit içinde anodize edilirken, Mg AZ31B fosforik asit ve potasyum hidroksit içinde 20V DC potansiyel uygulanarak anodize edilmiştir. %3 NaCl, fosfat tamponlu salin (PBS) ve deiyonize (DI) su çözeltilerine daldırılarak uzun süreli deneyler yapıldı. Korozyon hızı ve deseni elektrokimyasal analiz ile ölçülmüş ve anotlamanın malzeme yüzeyindeki doğal oksit tabakasını arttırdığı, korozyon hızını azalttığı ve biyomalzemenin ömrünü uzattığı gözlemlenmiştir.",
-        models: [
-            "Model 1 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 2 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 3 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 4 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ"
-        ]
-    },
-    {
-        abstract: "A study about long-term corrosion behavior of anodized and non-anodized Ti6Al4V and MgAZ31B biomaterials was conducted under controlled conditions. By applying 20V DC potential, MgAZ31B alloys was anodized in phosphoric acid and potassium hydroxide while Ti6Al4V alloys was anodized in phosphoric acid and oxalic acid. Long-term experiments were carried out by immersing them in deionized (DI) water, 3% NaCl and phosphate-buffered saline (PBS) solutions. The corrosion rate and pattern were measured by electrochemical analysis. Also, as a result of anodization, the natural oxide layer was observed on the material surface, thus the corrosion rate is reduced and the life of the biomaterial has been improved.",
-        models: [
-            "Model 1 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 2 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 3 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 4 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE"
-        ]
-    },
-        abstract: "Eloksallı ve anodize edilmemiş Ti6Al4V ve Mg AZ31B biyomalzemelerinin korozyon davranışına ilişkin uzun vadeli bir araştırma, kontrollü koşullar altında gerçekleştirilmiştir. Ti6Al4V fosforik asit ve oksalik asit içinde anodize edilirken, Mg AZ31B fosforik asit ve potasyum hidroksit içinde 20V DC potansiyel uygulanarak anodize edilmiştir. %3 NaCl, fosfat tamponlu salin (PBS) ve deiyonize (DI) su çözeltilerine daldırılarak uzun süreli deneyler yapıldı. Korozyon hızı ve deseni elektrokimyasal analiz ile ölçülmüş ve anotlamanın malzeme yüzeyindeki doğal oksit tabakasını arttırdığı, korozyon hızını azalttığı ve biyomalzemenin ömrünü uzattığı gözlemlenmiştir.",
-        models: [
-            "Model 1 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 2 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 3 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 4 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ"
-        ]
-    },
-    {
-        abstract: "A study about long-term corrosion behavior of anodized and non-anodized Ti6Al4V and MgAZ31B biomaterials was conducted under controlled conditions. By applying 20V DC potential, MgAZ31B alloys was anodized in phosphoric acid and potassium hydroxide while Ti6Al4V alloys was anodized in phosphoric acid and oxalic acid. Long-term experiments were carried out by immersing them in deionized (DI) water, 3% NaCl and phosphate-buffered saline (PBS) solutions. The corrosion rate and pattern were measured by electrochemical analysis. Also, as a result of anodization, the natural oxide layer was observed on the material surface, thus the corrosion rate is reduced and the life of the biomaterial has been improved.",
-        models: [
-            "Model 1 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 2 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 3 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 4 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE"
-        ]
-    },
-        abstract: "Eloksallı ve anodize edilmemiş Ti6Al4V ve Mg AZ31B biyomalzemelerinin korozyon davranışına ilişkin uzun vadeli bir araştırma, kontrollü koşullar altında gerçekleştirilmiştir. Ti6Al4V fosforik asit ve oksalik asit içinde anodize edilirken, Mg AZ31B fosforik asit ve potasyum hidroksit içinde 20V DC potansiyel uygulanarak anodize edilmiştir. %3 NaCl, fosfat tamponlu salin (PBS) ve deiyonize (DI) su çözeltilerine daldırılarak uzun süreli deneyler yapıldı. Korozyon hızı ve deseni elektrokimyasal analiz ile ölçülmüş ve anotlamanın malzeme yüzeyindeki doğal oksit tabakasını arttırdığı, korozyon hızını azalttığı ve biyomalzemenin ömrünü uzattığı gözlemlenmiştir.",
-        models: [
-            "Model 1 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 2 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 3 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "Model 4 Tahmini: GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ"
-        ]
-    },
-    {
-        abstract: "A study about long-term corrosion behavior of anodized and non-anodized Ti6Al4V and MgAZ31B biomaterials was conducted under controlled conditions. By applying 20V DC potential, MgAZ31B alloys was anodized in phosphoric acid and potassium hydroxide while Ti6Al4V alloys was anodized in phosphoric acid and oxalic acid. Long-term experiments were carried out by immersing them in deionized (DI) water, 3% NaCl and phosphate-buffered saline (PBS) solutions. The corrosion rate and pattern were measured by electrochemical analysis. Also, as a result of anodization, the natural oxide layer was observed on the material surface, thus the corrosion rate is reduced and the life of the biomaterial has been improved.",
-        models: [
-            "Model 1 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 2 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 3 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE",
-            "Model 4 Tahmini: STUDYING THE ELECTROCHEMICAL BEHAVIORS OF ANODIZED METALLIC IMPLANTS FOR IMPROVED CORROSION RESISTANCE"
-        ]
-    },
+    }
+    // Diğer abstract'lar burada eklenebilir
 ];
 
-
-const itemsPerPage = 2; 
+// Sayfalama ayarları
+const itemsPerPage = 2; // Bir sayfada gösterilecek abstract sayısı
 let currentPage = 1;
 
-
+// Sayfa yükleme işlevi
 function loadPage(page) {
     const container = document.getElementById("abstract-container");
     container.innerHTML = ""; // Mevcut içeriği temizle
@@ -268,5 +116,5 @@ document.getElementById("next").addEventListener("click", () => {
     }
 });
 
-
+// İlk sayfa yüklemesi
 loadPage(currentPage);
