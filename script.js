@@ -187,6 +187,7 @@ const abstracts = [
 const itemsPerPage = 4; // Bir sayfada gösterilecek abstract sayısı
 let currentPage = 1;
 let answers = JSON.parse(localStorage.getItem("answers")) || {};
+
 // Sayfa yükleme işlevi
 function loadPage(page) {
     const container = document.getElementById("abstract-container");
@@ -194,53 +195,72 @@ function loadPage(page) {
     
     container.innerHTML = ""; // Mevcut içeriği temizle
     pagination.innerHTML = ""; // Sayfa numarası butonlarını temizle
-    
+
     const start = (page - 1) * itemsPerPage;
     const end = start + itemsPerPage;
-    const currentItems = abstracts.slice(start, end);
+    const currentItems = abstracts.slice(start, end); // abstracts verisini alıyoruz
 
-    currentItems.forEach(item => {
+    currentItems.forEach((item, index) => {
         const abstractDiv = document.createElement("div");
         abstractDiv.classList.add("abstract");
 
+        // Abstract metnini ekle
         const abstractText = document.createElement("p");
         abstractText.textContent = item.abstract;
         abstractDiv.appendChild(abstractText);
 
+        // Model seçeneklerini ekle
         const modelsList = document.createElement("ul");
-        item.models.forEach(model => {
+        item.models.forEach((model, idx) => {
             const listItem = document.createElement("li");
             listItem.textContent = model;
             modelsList.appendChild(listItem);
-        });
-        abstractDiv.appendChild(modelsList);
-        const input = document.createElement("input");
-        input.type = "text";
-        input.name = `abstract-${start + index}`;
-        input.value = answers[input.name] || ""; // Eğer daha önce kaydedilen cevap varsa, yükle
-        input.addEventListener("input", () => {
-            saveAnswer(input.name, input.value); // Cevap her değiştiğinde kaydedilir
+
+            // Puanlama dropdown'ı ekle
+            const select = document.createElement("select");
+            select.id = `model${start + index + 1}-${idx + 1}-criterion4`;
+            select.name = `model${start + index + 1}-${idx + 1}-criterion4`;
+            select.required = true;
+
+            const options = [1, 2, 3, 4, 5];
+            options.forEach(value => {
+                const option = document.createElement("option");
+                option.value = value;
+                option.textContent = value;
+                select.appendChild(option);
+            });
+
+            // Eğer daha önce kaydedilen bir cevap varsa, seçilen değeri yükle
+            const savedAnswer = answers[select.name];
+            if (savedAnswer) {
+                select.value = savedAnswer;
+            }
+
+            // Puanlama dropdown'ına input event listener ekleyerek cevapları kaydediyoruz
+            select.addEventListener("change", () => {
+                saveAnswer(select.name, select.value);
+            });
+
+            abstractDiv.appendChild(select);
         });
 
-        abstractDiv.appendChild(input);
+        abstractDiv.appendChild(modelsList);
         container.appendChild(abstractDiv);
     });
 
     // Sayfa numaralarını güncelle
-    const pagination = document.getElementById("pagination");
-    pagination.innerHTML = "";
-
     const totalPages = Math.ceil(abstracts.length / itemsPerPage);
     for (let i = 1; i <= totalPages; i++) {
         const pageLink = document.createElement("button");
         pageLink.textContent = i;
         pageLink.onclick = function() {
-            loadPage(i);
+            currentPage = i; // Sayfa numarasını güncelle
+            loadPage(currentPage);
         };
         pagination.appendChild(pageLink);
     }
-}
-// Sayfa numarasını güncelle
+
+    // Sayfa numarasını güncelle
     const pageInfo = document.getElementById("page-info");
     pageInfo.textContent = `Sayfa ${currentPage}`;
 
@@ -272,7 +292,8 @@ function saveAnswer(name, value) {
     answers[name] = value;
     localStorage.setItem("answers", JSON.stringify(answers));
 }
+
 // Sayfa yüklendiğinde ilk sayfayı yükle
 window.onload = function() {
     loadPage(currentPage);
-}; 
+};
