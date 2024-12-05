@@ -27,6 +27,7 @@ let currentPage = 1;
 
 // Sayfa yükleme işlevi
 function loadPage(page) {
+    abstractContainer.innerHTML = "";
     const container = document.getElementById("abstract-container");
     container.innerHTML = ""; // Mevcut içeriği temizle
 
