@@ -191,6 +191,7 @@ function loadPage(page) {
     const container = document.getElementById("abstract-container");
     const pagination = document.getElementById("pagination");
 
+    // Eğer container veya pagination öğesi yoksa, hata ver
     if (!container || !pagination) {
         console.error("HTML öğeleri bulunamadı.");
         return;
