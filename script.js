@@ -186,12 +186,15 @@ const abstracts = [
 
 const itemsPerPage = 4; // Bir sayfada gösterilecek abstract sayısı
 let currentPage = 1;
-
+let answers = JSON.parse(localStorage.getItem("answers")) || {};
 // Sayfa yükleme işlevi
 function loadPage(page) {
     const container = document.getElementById("abstract-container");
+    const pagination = document.getElementById("pagination");
+    
     container.innerHTML = ""; // Mevcut içeriği temizle
-
+    pagination.innerHTML = ""; // Sayfa numarası butonlarını temizle
+    
     const start = (page - 1) * itemsPerPage;
     const end = start + itemsPerPage;
     const currentItems = abstracts.slice(start, end);
@@ -211,7 +214,15 @@ function loadPage(page) {
             modelsList.appendChild(listItem);
         });
         abstractDiv.appendChild(modelsList);
+        const input = document.createElement("input");
+        input.type = "text";
+        input.name = `abstract-${start + index}`;
+        input.value = answers[input.name] || ""; // Eğer daha önce kaydedilen cevap varsa, yükle
+        input.addEventListener("input", () => {
+            saveAnswer(input.name, input.value); // Cevap her değiştiğinde kaydedilir
+        });
 
+        abstractDiv.appendChild(input);
         container.appendChild(abstractDiv);
     });
 
@@ -229,7 +240,38 @@ function loadPage(page) {
         pagination.appendChild(pageLink);
     }
 }
+// Sayfa numarasını güncelle
+    const pageInfo = document.getElementById("page-info");
+    pageInfo.textContent = `Sayfa ${currentPage}`;
 
+    // Sayfa geçiş butonlarının devre dışı bırakılması
+    const prevButton = document.getElementById("prev");
+    const nextButton = document.getElementById("next");
+
+    prevButton.disabled = currentPage === 1;
+    nextButton.disabled = currentPage === totalPages;
+
+    // Sayfa geçiş butonları
+    prevButton.onclick = function () {
+        if (currentPage > 1) {
+            currentPage--;
+            loadPage(currentPage);
+        }
+    };
+
+    nextButton.onclick = function () {
+        if (currentPage < totalPages) {
+            currentPage++;
+            loadPage(currentPage);
+        }
+    };
+}
+
+// Veriyi localStorage'a kaydet
+function saveAnswer(name, value) {
+    answers[name] = value;
+    localStorage.setItem("answers", JSON.stringify(answers));
+}
 // Sayfa yüklendiğinde ilk sayfayı yükle
 window.onload = function() {
     loadPage(currentPage);
