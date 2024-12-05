@@ -24,8 +24,9 @@ h1 {
     font-size: 14px;
     text-align: justify;
 }
-.h2 model{
-font-weight:bold;
+.model{
+font-size: 14px;
+ color: #000000;
 }
 
 .abstract {
