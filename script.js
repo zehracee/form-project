@@ -47,10 +47,10 @@ const abstracts = [
     }
 ];
 
-
-const itemsPerPage = 4; 
+const itemsPerPage = 4;
 let currentPage = 1;
-let evaluationData = {};
+let evaluationData = {}; // Abstract ve model bazında yapılandırılmış veri
+
 function loadPage(page) {
     const container = document.getElementById("abstract-container");
     container.innerHTML = ""; // Mevcut içeriği temizle
@@ -59,48 +59,59 @@ function loadPage(page) {
     const currentItems = abstracts.slice(start, end);
 
     currentItems.forEach((item, index) => {
+        const abstractNumber = start + index + 1; // Abstract numarası
         const abstractDiv = document.createElement("div");
         abstractDiv.classList.add("abstract-section");
         abstractDiv.innerHTML = `
-            <p class="abstract"><b>Abstract ${start + index + 1}:</b> ${item.abstract}</p>
-            ${item.models.map((model, idx) => `
-                <div class="form-section">
-                    <h2><span class="model">Model ${idx + 1} Tahmini: </span> ${model}</h2>
-                    <div class="criteria-grid">
-                        ${['Netlik', 'Akıcılık', 'Bağlamsal İlgi', 'Tutarlılık'].map((criterion, criterionIdx) => {
-                            const fieldName = `model${start + index + 1}-${idx + 1}-criterion${criterionIdx + 1}`;
-                            const savedValue = evaluationData[fieldName] || ""; 
-                            return `
-                                <div>
-                                    <label for="${fieldName}">${criterion}</label>
-                                    <select id="${fieldName}" name="${fieldName}" required>
-                                        <option value="" disabled ${!savedValue ? "selected" : ""}>Seçiniz</option>
-                                        ${[1, 2, 3, 4, 5].map(option => `
-                                            <option value="${option}" ${savedValue == option ? "selected" : ""}>${option}</option>
-                                        `).join("")}
-                                    </select>
-                                </div>
-                            `;
-                        }).join("")}
+            <p class="abstract"><b>Abstract ${abstractNumber}:</b> ${item.abstract}</p>
+            ${item.models.map((model, idx) => {
+                const modelNumber = idx + 1; // Model numarası
+                return `
+                    <div class="form-section">
+                        <h2><span class="model">Model ${modelNumber} Tahmini: </span> ${model}</h2>
+                        <div class="criteria-grid">
+                            ${['Netlik', 'Akıcılık', 'Bağlamsal İlgi', 'Tutarlılık'].map((criterion, criterionIdx) => {
+                                const criterionKey = `criterion${criterionIdx + 1}`;
+                                const fieldName = `abstract${abstractNumber}-model${modelNumber}-${criterionKey}`;
+                                const savedValue = evaluationData[fieldName] || ""; // Kaydedilen değeri yükle
+                                return `
+                                    <div>
+                                        <label for="${fieldName}">${criterion}</label>
+                                        <select id="${fieldName}" name="${fieldName}" required>
+                                            <option value="" disabled ${!savedValue ? "selected" : ""}>Seçiniz</option>
+                                            ${[1, 2, 3, 4, 5].map(option => `
+                                                <option value="${option}" ${savedValue == option ? "selected" : ""}>${option}</option>
+                                            `).join("")}
+                                        </select>
+                                    </div>
+                                `;
+                            }).join("")}
+                        </div>
                     </div>
-                </div>
-            `).join("")}
+                `;
+            }).join("")}
         `;
 
-       
+        // Değişiklikleri dinle ve evaluationData'ya kaydet
         abstractDiv.querySelectorAll("select").forEach(select => {
             select.addEventListener("change", (e) => {
-                evaluationData[e.target.name] = e.target.value;
+                const [abstract, model, criterion] = e.target.name.split("-");
+                if (!evaluationData[abstract]) evaluationData[abstract] = {};
+                if (!evaluationData[abstract][model]) evaluationData[abstract][model] = {};
+                evaluationData[abstract][model][criterion] = e.target.value;
             });
         });
 
         container.appendChild(abstractDiv);
     });
+
+    // Sayfa bilgisini güncelle
     document.getElementById("page-info").innerText = `Sayfa ${page}`;
     document.getElementById("prev").disabled = page === 1;
     document.getElementById("next").disabled = page * itemsPerPage >= abstracts.length;
 }
 
+// Önceki sayfa butonu
 document.getElementById("prev").addEventListener("click", () => {
     if (currentPage > 1) {
         currentPage--;
@@ -108,6 +119,7 @@ document.getElementById("prev").addEventListener("click", () => {
     }
 });
 
+// Sonraki sayfa butonu
 document.getElementById("next").addEventListener("click", () => {
     if (currentPage * itemsPerPage < abstracts.length) {
         currentPage++;
@@ -115,14 +127,13 @@ document.getElementById("next").addEventListener("click", () => {
     }
 });
 
-
+// İlk sayfayı yükle
 loadPage(currentPage);
 
-
+// Form gönderim işlemi
 document.getElementById("submit").addEventListener("click", () => {
-    console.log("Gönderilen Veriler:", evaluationData);
+    console.log("Gönderilen Veriler:", JSON.stringify(evaluationData, null, 2));
 
-   
     fetch("https://formspree.io/f/mvgollgq", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
