@@ -29,9 +29,9 @@ const abstracts = [
     }
 ];
 
-const itemsPerPage =2;
+const itemsPerPage = 1;
 let currentPage = 1;
-let evaluationData = {}; // Abstract ve model bazında yapılandırılmış veri
+let evaluationData = {}; // Tüm sayfalardan gelen veriler saklanır
 
 function loadPage(page) {
     const container = document.getElementById("abstract-container");
@@ -77,10 +77,7 @@ function loadPage(page) {
         // Değişiklikleri dinle ve evaluationData'ya kaydet
         abstractDiv.querySelectorAll("select").forEach(select => {
             select.addEventListener("change", (e) => {
-                const [abstract, model, criterion] = e.target.name.split("-");
-                if (!evaluationData[abstract]) evaluationData[abstract] = {};
-                if (!evaluationData[abstract][model]) evaluationData[abstract][model] = {};
-                evaluationData[abstract][model][criterion] = e.target.value;
+                evaluationData[e.target.name] = e.target.value;
             });
         });
 
@@ -91,6 +88,10 @@ function loadPage(page) {
     document.getElementById("page-info").innerText = `Sayfa ${page}`;
     document.getElementById("prev").disabled = page === 1;
     document.getElementById("next").disabled = page * itemsPerPage >= abstracts.length;
+
+    // Gönder butonu yalnızca son sayfada aktif
+    const submitButton = document.getElementById("submit");
+    submitButton.disabled = page !== Math.ceil(abstracts.length / itemsPerPage);
 }
 
 // Önceki sayfa butonu
