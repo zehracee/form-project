@@ -182,8 +182,16 @@ const abstracts = [
         ]
     }
 ];
+document.getElementById("evaluation-form").addEventListener("submit", (e) => {
+    
+    const hiddenInput = document.createElement("input");
+    hiddenInput.type = "hidden";
+    hiddenInput.name = "evaluationData"; 
+    hiddenInput.value = JSON.stringify(evaluationData); 
+    e.target.appendChild(hiddenInput); 
+});
 
-const itemsPerPage = 4; // Bir sayfada gösterilecek abstract sayısı
+const itemsPerPage = 4; 
 let currentPage = 1;
 let evaluationData = {};
 function loadPage(page) {
