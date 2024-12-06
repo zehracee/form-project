@@ -17,23 +17,20 @@ const abstracts = [
             "GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
             "GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ"
         ]
-    },
-    {
-        abstract: "Eloksallı ve anodize edilmemiş Ti6Al4V ve Mg AZ31B biyomalzemelerinin korozyon davranışına ilişkin uzun vadeli bir araştırma, kontrollü koşullar altında gerçekleştirilmiştir. Ti6Al4V fosforik asit ve oksalik asit içinde anodize edilirken, Mg AZ31B fosforik asit ve potasyum hidroksit içinde 20V DC potansiyel uygulanarak anodize edilmiştir. %3 NaCl, fosfat tamponlu salin (PBS) ve deiyonize (DI) su çözeltilerine daldırılarak uzun süreli deneyler yapıldı. Korozyon hızı ve deseni elektrokimyasal analiz ile ölçülmüş ve anotlamanın malzeme yüzeyindeki doğal oksit tabakasını arttırdığı, korozyon hızını azalttığı ve biyomalzemenin ömrünü uzattığı gözlemlenmiştir.",
-        models: [
-            "GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ",
-            "GELİŞMİŞ KOROZYON DİRENCİ İÇİN ELOKSALLI METALİK İMPLANTLARIN ELEKTROKİMYASAL DAVRANIŞLARININ İNCELENMESİ"
-        ]
     }
 ];
 
 const itemsPerPage = 1;
 let currentPage = 1;
 let evaluationData = {};
-const username = "kullanici_adi"; // Kullanıcı adını buraya yazabilirsiniz ya da bir giriş sisteminden alabilirsiniz.
+let username = ""; // Kullanıcı adı dinamik olarak alınacak
 
+// Kullanıcı adını formdan almak
+document.getElementById("username").addEventListener("input", (e) => {
+    username = e.target.value.trim();
+});
+
+// Sayfa yükleme fonksiyonu
 function loadPage(page) {
     const container = document.getElementById("abstract-container");
     container.innerHTML = ""; // Mevcut içeriği temizle
@@ -86,9 +83,11 @@ function loadPage(page) {
     document.getElementById("next").disabled = page * itemsPerPage >= abstracts.length;
 
     // Gönder butonunun aktifliği
-    document.getElementById("submit").disabled = page !== Math.ceil(abstracts.length / itemsPerPage);
+    const submitBtn = document.getElementById("submit");
+    submitBtn.disabled = page !== Math.ceil(abstracts.length / itemsPerPage) || !username.trim();
 }
 
+// Önceki ve sonraki sayfa butonları
 document.getElementById("prev").addEventListener("click", () => {
     if (currentPage > 1) {
         currentPage--;
@@ -103,30 +102,39 @@ document.getElementById("next").addEventListener("click", () => {
     }
 });
 
+// Verileri gönderme
 document.getElementById("submit").addEventListener("click", () => {
-    // Kullanıcı adı ve değerlendirme verilerini birleştir
+    // Kullanıcı adı kontrolü
+    if (!username.trim()) {
+        alert("Lütfen kullanıcı adınızı girin.");
+        return;
+    }
+
+    // Değerlendirme verilerini formatla
     const formattedData = Object.entries(evaluationData).map(([key, value]) => {
-        const [abstractNum, modelNum, criterion] = key.match(/\d+/g);
+        const [abstractNum, modelNum, criterionIdx] = key.match(/\d+/g);
+        const criterionLabels = ['Netlik', 'Akıcılık', 'Bağlamsal İlgi', 'Tutarlılık'];
         return {
             username: username,
-            abstract: abstractNum,
-            model: modelNum,
-            criterion: criterion,
-            score: value
+            abstract: parseInt(abstractNum),
+            model: parseInt(modelNum),
+            criterion: criterionLabels[criterionIdx - 1],
+            score: parseInt(value)
         };
     });
 
-   
-    fetch("https://script.google.com/macros/s/AKfycbwCASQxi9kp-QJLxA9gKF1B57DMuKtUkp_GFvM5UaR7mubUGs-sc_iv_YwtOzFeOgocxA/exec", { 
+    // Fetch ile verileri gönder
+    fetch("https://script.google.com/macros/s/AKfycbwCASQxi9kp-QJLxA9gKF1B57DMuKtUkp_GFvM5UaR7mubUGs-sc_iv_YwtOzFeOgocxA/exec", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formattedData),
     })
-    .then(response => {
-        if (response.ok) {
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
             alert("Değerlendirme Google Sheets'e kaydedildi!");
         } else {
-            alert("Kaydetme sırasında bir hata oluştu.");
+            alert("Sunucudan hata döndü: " + data.message);
         }
     })
     .catch(error => {
@@ -135,5 +143,6 @@ document.getElementById("submit").addEventListener("click", () => {
     });
 });
 
-
+// Sayfa başlat
 loadPage(currentPage);
+
