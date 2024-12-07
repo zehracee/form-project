@@ -164,7 +164,7 @@ function loadPage(page) {
 
     // Gönder butonunun aktifliği
     const submitBtn = document.getElementById("submit");
-   submitBtn.disabled = page !== Math.ceil(abstracts.length / itemsPerPage) || !username.trim();
+   //submitBtn.disabled = page !== Math.ceil(abstracts.length / itemsPerPage) || !username.trim();
 }
 
 // Önceki ve sonraki sayfa butonları
