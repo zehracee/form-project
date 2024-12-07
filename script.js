@@ -103,18 +103,9 @@ const abstracts = [
 const itemsPerPage =10 ;
 let currentPage = 1;
 let evaluationData = {};
-let username = ""; // Kullanıcı adı dinamik olarak alınacak
-
-// Kullanıcı adını formdan almak
-document.getElementById("username").addEventListener("input", (e) => {
-    username = e.target.value.trim();
-});
-
-// Sayfa yükleme fonksiyonu
 function loadPage(page) {
     const container = document.getElementById("abstract-container");
-    container.innerHTML = ""; // Mevcut içeriği temizle
-
+    container.innerHTML = "";
     const start = (page - 1) * itemsPerPage;
     const end = start + itemsPerPage;
     const currentItems = abstracts.slice(start, end);
@@ -182,39 +173,28 @@ function loadPage(page) {
    // }
 //});
 
-// Verileri gönderme
-document.getElementById("submit").addEventListener("click", () => {
-    // Kullanıcı adı kontrolü
-    if (!username.trim()) {
-        alert("Lütfen kullanıcı adınızı girin.");
+loadPage(currentPage);
+document.getElementById("submit-btn").addEventListener("click", () => {
+    const username = document.getElementById("username").value;
+    if (!username) {
+        alert("Lütfen kullanıcı adını giriniz.");
         return;
     }
 
-    // Değerlendirme verilerini formatla
-    const formattedData = Object.entries(evaluationData).map(([key, value]) => {
-        const [abstractNum, modelNum, criterionIdx] = key.match(/\d+/g);
-        const criterionLabels = ['Netlik', 'Akıcılık', 'Bağlamsal İlgi', 'Tutarlılık'];
-        return {
-            username: username,
-            abstract: parseInt(abstractNum),
-            model: parseInt(modelNum),
-            criterion: criterionLabels[criterionIdx - 1],
-            score: parseInt(value)
-        };
-    });
+    evaluationData.username = username;
 
-    // Fetch ile verileri gönder
-    fetch("https://script.google.com/macros/s/AKfycbwCASQxi9kp-QJLxA9gKF1B57DMuKtUkp_GFvM5UaR7mubUGs-sc_iv_YwtOzFeOgocxA/exec", {
+    console.log("Gönderilen Veriler:", evaluationData);
+
+    fetch("https://formspree.io/f/mvgollgq", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formattedData),
+        body: JSON.stringify(evaluationData),
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert("Değerlendirme Google Sheets'e kaydedildi!");
+    .then(response => {
+        if (response.ok) {
+            alert("Değerlendirmeler başarıyla gönderildi!");
         } else {
-            alert("Sunucudan hata döndü: " + data.message);
+            alert("Gönderim sırasında bir hata oluştu, lütfen tekrar deneyin.");
         }
     })
     .catch(error => {
@@ -223,6 +203,4 @@ document.getElementById("submit").addEventListener("click", () => {
     });
 });
 
-// Sayfa başlat
-loadPage(currentPage);
 
