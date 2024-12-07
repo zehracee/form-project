@@ -100,7 +100,7 @@ const abstracts = [
  
 ];
 
-const itemsPerPage = 1;
+const itemsPerPage =10 ;
 let currentPage = 1;
 let evaluationData = {};
 let username = ""; // Kullanıcı adı dinamik olarak alınacak
