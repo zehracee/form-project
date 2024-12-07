@@ -46,7 +46,58 @@ const abstracts = [
             "İzmir Karabağlar Orman Yangınının Uzaktan Algılama ile Analizi ve Doğruluk Değerlendirmesi",
             "Orman Yangınlarından sonra Uzaktan Algılama Teknikleri ile Alanın Belirlenmesi: İzmir Karabağlar Örneği"
         ]
+    },
+ 
+  {
+        abstract: "In the study carried out in line with the stated purposes, monthly rain, humidity and temperature data, wheat production amount, and wheat productivity data of Konya province between 1980-2020 were used. Using these data, wheat productivity estimation was performed with (Gated Recurrent Units) GRU and Long Short Term Memory (LSTM) methods, which are Recurrent Neural Network (RNN) based algorithms. When wheat productivity estimation performance was examined with the implemented GRU-based model, 0.9550, 0.0059, 0.0280, 0.0623, 7.45 values were obtained for the R2 score, MSE, RMSE, MAE and MAPE values, respectively. In the performance results obtained with the LSTM method, which is another RNN-based method, 0.9667, 0.0054, 0.0280, 0.0614, 7.33 values were obtained for the R2 score, MSE, RMSE, MAE and MAPE values, respectively. Although the LSTM method gave better results than the GRU method, the training modelling time of the LSTM method took longer than that of the GRU method.",
+        models: [
+            "Long Short-Term Memory (LSTM) vs. Gated Recurrent Unit (GRU) for Forecasting Wheat Productivity in Konya Province, Turkey (1980-2020)",
+            "Comparative Analysis of GRU and LSTM Models for Wheat Productivity Estimation Using Climatic Data",
+            "Wheat Productivity Estimation in Konya Using GRU and LSTM Neural Networks (1980-2020)",
+            "Evaluating Wheat Productivity Estimation Using GRU and LSTM Methods in Konya Province, Turkey (1980-2020)"
+        ]
+    },
+ 
+  {
+        abstract: "The internet holds a significant role in all aspects of our lives, and its importance continues to grow each day. Therefore, the usability of the Internet holds great significance. Low data quality and disinformation severely impact the usability of the internet. Consequently, people face challenges in obtaining accurate and clear information. In the present day, websites predominantly feature image-based content like pictures and videos, as opposed to text-based content. The classification of such content holds immense importance for search engines. As a result, the classification of web pages stands as a crucial research area for scholars. This study focuses on the classification of image-based web pages. A deep learning-based approach is proposed to categorize web pages into four main groups: tourism, machinery, music, and sports. The suggested method yielded the most favourable outcomes when utilizing the Stochastic Gradient Descent (SGD) optimization method, achieving an accuracy of 0.9737, a recall of 0.9474, an F1 score of 0.9474, and an Area Under the ROC Curve (AUC) value of 0.9649. Furthermore, the utilization of Deep Learning (DL) led to achieving the most advanced results in web page classification within the existing literature, particularly on the WebScreenshots dataset.",
+        models: [
+            "Deep Learning-Based Classification of Image-Dominant Web Pages: A Study Achieving State-of-the-Art Performance",
+            "Deep Learning Approach for Image-Based Web Page Classification on Tourism, Machinery, Music, and Sports",
+            "Deep Learning for Image-Based Web Page Classification: High Accuracy Using SGD Optimization",
+            "Deep Learning-based Web Page Classification: Enhancing Usability through Accurate Image-Based Content Categorization"
+        ]
+    },
+ 
+  {
+        abstract: "Alzheimer disease is a common type of dementia that is a progressive neurodegenerative disease with no cure. Many imaging techniques are used to diagnose the disease. One of these techniques is Magnetic Resonance Imaging (MRI). Early diagnosis is of great importance for the patient and his family in slowing the progression of the disease and taking the necessary precautions. Supportive studies have been carried out on this subject with deep learning methods for early and accurate diagnosis. At the same time, deep learning methods are used to follow the course of the disease. This study was carried out using AlexNet and MobileNetV2 architectures and CNN (Convolutional Neural Network) model. These features were combined by extracting features from both architectures using a total of 6400 MR images. Feature selection was made using the NCA (Neighbourhood Components Analysis) algorithm and classification were performed with SVM (Support Vector Machine). 100% accuracy value was calculated in the studied model.",
+        models: [
+            "Deep Learning-Based MRI Analysis for Early Alzheimer's Disease Diagnosis: A CNN Approach with AlexNet and MobileNetV2",
+            "Deep Learning Approaches for Early Alzheimer's Diagnosis Using MRI and CNN Models",
+            "Early Alzheimer’s Diagnosis Using CNN and SVM with MRI Imaging for 100% Accuracy",
+            "Deep Learning for Early Alzheimer's Disease Diagnosis and Progression Tracking using MRI Images"
+        ]
+    },
+ 
+  {
+        abstract: "Nowadays, the price of a product varies dramatically across different e-commerce retailers. This study aims to develop a user-friendly price comparison website using Jsoup, state-of-the-art web scraping techniques. The proposed platform gathers data from well-known retailers, analyzes the data to extract product information, and presents it to consumers in real time when needed. Furthermore, to assist users in determining product prices, the platform showcases trending data, economical choices, products that offer the best value per unit, and highly rated items. By meticulously analyzing various product attributes, the platform identifies meaningful patterns and correlations by using SVD algorithm. Users can find both the most affordable product and the recommended option based on other users&#039; reviews. On the other hand, users can avoid the emotional distress of purchasing a product at a higher price than what the marketplace offers. As a result, users are empowered to make more informed purchasing decisions, benefiting from the comprehensive analysis conducted by the platform. The performance of the work was tested using real data grabbed from different marketplaces. The results show our system achieved an acceptable accuracy rate compared to the industrial solutions and relevant literature.",
+        models: [
+            "Real-Time Price Comparison Website: Empowering Consumers with Data-Driven Product Insights",
+            "Real-Time Price Comparison Platform: Empowering Informed Purchasing Decisions through Web Scraping",
+            "Real-Time Price Comparison and Trend Analysis Using Advanced Web Scraping and SVD",
+            "Real-Time Price Comparison Platform: Empowering Informed Purchasing Decisions through Web Scraping and Data Analytics"
+        ]
+    },
+ 
+  {
+        abstract: "Forest fires are a common natural disaster in the world. Remote sensing technologies are frequently used in the extraction of the burned areas after forest fires. In this study, the forest fire that occurred in Karabağlar district of İzmir province on August 18, 2019, and which lasted for 53 hours was examined. Remote sensing techniques have been applied to multispectral images (MSI) and Synthetic Aperture Radar (SAR) datasets (Landsat 8, Sentinel 2, and Sentinel 1A) from the dates of pre-fire and post-fire periods of each dataset. Additionally, the fire risk model was calculated. Burned areas were extracted by using two indices of vegetation which are NDVI and NBR. The unsupervised classification was applied on the dNBR (Difference Normalized Combustion Index) and dNDVI (Difference Normalized Plant Index) indices images. Accuracy analyzes were made by calculating the areas of the classified images and compared with the Ecology Union data. The burned area was calculated with 99.96% and 99.95% accuracy, respectively. Sentinel 1 SAR images with Google Earth Engine platform; It is masked according to the classified areas on the dNDVI and dNBR indices of the Sentinel 2 satellite. The scattering values obtained from the masked areas were calculated statistically and the results obtained were discussed.",
+        models: [
+            "Remote Sensing and Unsupervised Classification for Accurate Assessment of the 2019 İzmir Forest Fire: A Sentinel 1 SAR and Multi-Spectral Image Analysis",
+            "Assessing Burned Areas and Fire Risk Using Multi-Sensor Remote Sensing Data: A Case Study of the 2019 İzmir Forest Fire",
+            "Evaluating Burned Area Extraction Accuracy Using Multispectral and SAR Remote Sensing: A Case Study in İzmir",
+            "Assessing Forest Fire Impacts with Remote Sensing: A Comparative Study of MSI and SAR Data in Karabağlar, İzmir."
+        ]
     }
+ 
 ];
 
 const itemsPerPage = 1;
