@@ -163,9 +163,9 @@ function loadPage(page) {
     document.getElementById("next").disabled = page * itemsPerPage >= abstracts.length;
 
     // Gönder butonunun aktifliği
-    const submitBtn = document.getElementById("submit");
-    submitBtn.disabled = page !== Math.ceil(abstracts.length / itemsPerPage) || !username.trim();
-}
+    //const submitBtn = document.getElementById("submit");
+   // submitBtn.disabled = page !== Math.ceil(abstracts.length / itemsPerPage) || !username.trim();
+//}
 
 // Önceki ve sonraki sayfa butonları
 document.getElementById("prev").addEventListener("click", () => {
