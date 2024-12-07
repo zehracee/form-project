@@ -158,9 +158,9 @@ function loadPage(page) {
         container.appendChild(abstractDiv);
     });
 
-    document.getElementById("page-info").innerText = `Sayfa ${page}`;
-    document.getElementById("prev").disabled = page === 1;
-    document.getElementById("next").disabled = page * itemsPerPage >= abstracts.length;
+    //document.getElementById("page-info").innerText = `Sayfa ${page}`;
+    //document.getElementById("prev").disabled = page === 1;
+    //document.getElementById("next").disabled = page * itemsPerPage >= abstracts.length;
 
     // Gönder butonunun aktifliği
     const submitBtn = document.getElementById("submit");
@@ -168,19 +168,19 @@ function loadPage(page) {
 }
 
 // Önceki ve sonraki sayfa butonları
-document.getElementById("prev").addEventListener("click", () => {
-    if (currentPage > 1) {
-        currentPage--;
-        loadPage(currentPage);
-    }
-});
+//document.getElementById("prev").addEventListener("click", () => {
+    //if (currentPage > 1) {
+        //currentPage--;
+       // loadPage(currentPage);
+   // }
+//});
 
-document.getElementById("next").addEventListener("click", () => {
-    if (currentPage * itemsPerPage < abstracts.length) {
-        currentPage++;
-        loadPage(currentPage);
-    }
-});
+//document.getElementById("next").addEventListener("click", () => {
+    //if (currentPage * itemsPerPage < abstracts.length) {
+       // currentPage++;
+        //loadPage(currentPage);
+   // }
+//});
 
 // Verileri gönderme
 document.getElementById("submit").addEventListener("click", () => {
