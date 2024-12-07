@@ -100,9 +100,10 @@ const abstracts = [
  
 ];
 
-const itemsPerPage =10 ;
+const itemsPerPage = 10;
 let currentPage = 1;
 let evaluationData = {};
+
 function loadPage(page) {
     const container = document.getElementById("abstract-container");
     container.innerHTML = "";
@@ -149,36 +150,45 @@ function loadPage(page) {
         container.appendChild(abstractDiv);
     });
 
-    //document.getElementById("page-info").innerText = `Sayfa ${page}`;
-    //document.getElementById("prev").disabled = page === 1;
-    //document.getElementById("next").disabled = page * itemsPerPage >= abstracts.length;
-
-    // Gönder butonunun aktifliği
-    const submitBtn = document.getElementById("submit");
-   //submitBtn.disabled = page !== Math.ceil(abstracts.length / itemsPerPage) || !username.trim();
+   
+    document.getElementById("page-info").innerText = `Sayfa ${page}`;
+    document.getElementById("prev").disabled = page === 1;
+    document.getElementById("next").disabled = page * itemsPerPage >= abstracts.length;
 }
 
-// Önceki ve sonraki sayfa butonları
-//document.getElementById("prev").addEventListener("click", () => {
-    //if (currentPage > 1) {
-        //currentPage--;
-       // loadPage(currentPage);
-   // }
-//});
 
-//document.getElementById("next").addEventListener("click", () => {
-    //if (currentPage * itemsPerPage < abstracts.length) {
-       // currentPage++;
-        //loadPage(currentPage);
-   // }
-//});
+function validateSelections() {
+    const totalFields = Object.keys(evaluationData).length;
+    const expectedFields = abstracts.length * abstracts[0].models.length * 4; // Her model için 4 kriter
+    return totalFields === expectedFields;
+}
 
-loadPage(currentPage);
 document.addEventListener("DOMContentLoaded", () => {
+    // Önceki ve sonraki sayfa kontrolleri
+    document.getElementById("prev").addEventListener("click", () => {
+        if (currentPage > 1) {
+            currentPage--;
+            loadPage(currentPage);
+        }
+    });
+
+    document.getElementById("next").addEventListener("click", () => {
+        if (currentPage * itemsPerPage < abstracts.length) {
+            currentPage++;
+            loadPage(currentPage);
+        }
+    });
+
+    
     document.getElementById("submit-btn").addEventListener("click", () => {
         const username = document.getElementById("username").value;
         if (!username) {
             alert("Lütfen kullanıcı adını giriniz.");
+            return;
+        }
+
+        if (!validateSelections()) {
+            alert("Lütfen tüm kriterler için seçim yapınız.");
             return;
         }
 
@@ -203,4 +213,8 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Bir hata oluştu, lütfen tekrar deneyin.");
         });
     });
+
+    
+    loadPage(currentPage);
 });
+
