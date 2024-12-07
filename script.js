@@ -128,7 +128,7 @@ function loadPage(page) {
                 <div class="form-section">
                     <h2><span class="model">Model ${idx + 1} Tahmini: </span> ${model}</h2>
                     <div class="criteria-grid">
-                        ${['Netlik (Modelin verdiği cevabın ne kadar anlaşılır olduğunu ölçer)', 'Akıcılık (Modelin verdiği cevabın dilbilgisi kurallarına uygunluğunu ölçer)', 'Bağlamsal İlgi (Modelin uygun cevap üretip üretmediğini ölçer)', 'Tutarlılık (Modelin cevabı mantıksal tutarlı mı sorusuna yanıt verir)'].map((criterion, criterionIdx) => {
+                        ${['Netlik (Modelin verdiği cevabın ne kadar anlaşılır olduğunu ölçer)', 'Akıcılık (Modelin verdiği cevabın dilbilgisi kurallarına uygunluğunu ölçer)', 'Bağlamsal İlgi (Modelin uygun cevap üretip üretmediğini ölçer)', 'Tutarlılık (Modelin cevabı mantıksal tutarlı mı?)'].map((criterion, criterionIdx) => {
                             const fieldName = `model${start + index + 1}-${idx + 1}-criterion${criterionIdx + 1}`;
                             const savedValue = evaluationData[fieldName] || ""; 
                             return `
