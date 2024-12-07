@@ -121,7 +121,7 @@ function loadPage(page) {
                     <h2><span class="model">Model ${idx + 1} Tahmini: </span> ${model}</h2>
                     <div class="criteria-grid">
                         ${['Netlik (Modelin verdiği cevabın ne kadar anlaşılır olduğunu ölçer)', 'Akıcılık (Modelin verdiği cevabın dilbilgisi kurallarına uygunluğunu ölçer)', 'Bağlamsal İlgi (Modelin uygun cevap üretip üretmediğini ölçer)', 'Tutarlılık (Modelin cevabı mantıksal tutarlı mı?)'].map((criterion, criterionIdx) => {
-                            const fieldName = `abstract${start + index + 1}-${idx + 1}-criterion${criterionIdx + 1}`;
+                            const fieldName = `abstract${start + index + 1}-Model${idx + 1}-criterion${criterionIdx + 1}`;
                             const savedValue = evaluationData[fieldName] || ""; 
                             return `
                                 <div>
@@ -150,21 +150,30 @@ function loadPage(page) {
         container.appendChild(abstractDiv);
     });
 
-   
     document.getElementById("page-info").innerText = `Sayfa ${page}`;
     document.getElementById("prev").disabled = page === 1;
     document.getElementById("next").disabled = page * itemsPerPage >= abstracts.length;
 }
 
-
+// Tüm seçimlerin yapıldığını kontrol et
 function validateSelections() {
-    const totalFields = Object.keys(evaluationData).length;
-    const expectedFields = abstracts.length * abstracts[0].models.length * 4; // Her model için 4 kriter
-    return totalFields === expectedFields;
+    let allValid = true;
+
+    abstracts.forEach((abstract, abstractIdx) => {
+        abstract.models.forEach((_, modelIdx) => {
+            for (let criterionIdx = 1; criterionIdx <= 4; criterionIdx++) {
+                const fieldName = `abstract${abstractIdx + 1}-${modelIdx + 1}-criterion${criterionIdx}`;
+                if (!evaluationData[fieldName]) {
+                    allValid = false;
+                }
+            }
+        });
+    });
+
+    return allValid;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Önceki ve sonraki sayfa kontrolleri
     document.getElementById("prev").addEventListener("click", () => {
         if (currentPage > 1) {
             currentPage--;
@@ -179,7 +188,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    
     document.getElementById("submit-btn").addEventListener("click", () => {
         const username = document.getElementById("username").value;
         if (!username) {
@@ -214,7 +222,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    
     loadPage(currentPage);
 });
 
