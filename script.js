@@ -174,33 +174,33 @@ function loadPage(page) {
 //});
 
 loadPage(currentPage);
-document.getElementById("submit-btn").addEventListener("click", () => {
-    const username = document.getElementById("username").value;
-    if (!username) {
-        alert("Lütfen kullanıcı adını giriniz.");
-        return;
-    }
-
-    evaluationData.username = username;
-
-    console.log("Gönderilen Veriler:", evaluationData);
-
-    fetch("https://formspree.io/f/mvgollgq", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(evaluationData),
-    })
-    .then(response => {
-        if (response.ok) {
-            alert("Değerlendirmeler başarıyla gönderildi!");
-        } else {
-            alert("Gönderim sırasında bir hata oluştu, lütfen tekrar deneyin.");
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("submit-btn").addEventListener("click", () => {
+        const username = document.getElementById("username").value;
+        if (!username) {
+            alert("Lütfen kullanıcı adını giriniz.");
+            return;
         }
-    })
-    .catch(error => {
-        console.error("Hata:", error);
-        alert("Bir hata oluştu, lütfen tekrar deneyin.");
+
+        evaluationData.username = username;
+
+        console.log("Gönderilen Veriler:", evaluationData);
+
+        fetch("https://formspree.io/f/mvgollgq", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(evaluationData),
+        })
+        .then(response => {
+            if (response.ok) {
+                alert("Değerlendirmeler başarıyla gönderildi!");
+            } else {
+                alert("Gönderim sırasında bir hata oluştu, lütfen tekrar deneyin.");
+            }
+        })
+        .catch(error => {
+            console.error("Hata:", error);
+            alert("Bir hata oluştu, lütfen tekrar deneyin.");
+        });
     });
 });
-
-
