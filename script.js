@@ -120,8 +120,8 @@ function loadPage(page) {
                 <div class="form-section">
                     <h2><span class="model">Model ${idx + 1} Tahmini: </span> ${model}</h2>
                     <div class="criteria-grid">
-                        ${['Netlik (Modelin verdiği cevabın ne kadar anlaşılır olduğunu ölçer)', 'Akıcılık (Modelin verdiği cevabın dilbilgisi kurallarına uygunluğunu ölçer)', 'Bağlamsal İlgi (Modelin uygun cevap üretip üretmediğini ölçer)', 'Tutarlılık (Modelin cevabı mantıksal tutarlı mı?)'].map((criterion, criterionIdx) => {
-                            const fieldName = `abstract${start + index + 1}-Model${idx + 1}-criterion${criterionIdx + 1}`;
+                        ${['Netlik', 'Akıcılık', 'Bağlamsal İlgi', 'Tutarlılık'].map((criterion, criterionIdx) => {
+                            const fieldName = `abstract${start + index + 1}-model${idx + 1}-criterion${criterionIdx + 1}`;
                             const savedValue = evaluationData[fieldName] || ""; 
                             return `
                                 <div>
@@ -155,25 +155,26 @@ function loadPage(page) {
     document.getElementById("next").disabled = page * itemsPerPage >= abstracts.length;
 }
 
-// Tüm seçimlerin yapıldığını kontrol et
+
 function validateSelections() {
-    let allValid = true;
+    let allSelectionsMade = true;
 
     abstracts.forEach((abstract, abstractIdx) => {
-        abstract.models.forEach((_, modelIdx) => {
+        abstract.models.forEach((model, modelIdx) => {
             for (let criterionIdx = 1; criterionIdx <= 4; criterionIdx++) {
-                const fieldName = `abstract${abstractIdx + 1}-${modelIdx + 1}-criterion${criterionIdx}`;
+                const fieldName = `abstract${abstractIdx + 1}-model${modelIdx + 1}-criterion${criterionIdx}`;
                 if (!evaluationData[fieldName]) {
-                    allValid = false;
+                    allSelectionsMade = false;
                 }
             }
         });
     });
 
-    return allValid;
+    return allSelectionsMade;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Önceki ve sonraki sayfa kontrolleri
     document.getElementById("prev").addEventListener("click", () => {
         if (currentPage > 1) {
             currentPage--;
