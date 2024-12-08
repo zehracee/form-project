@@ -125,7 +125,7 @@ function loadPage(page) {
                           'Akıcılık (Modelin verdiği cevabın dilbilgisi kurallarına uygunluğunu ölçer)', 
                           'Bağlamsal İlgi (Modelin uygun cevap üretip üretmediğini ölçer)', 
                           'Tutarlılık (Modelin cevabı mantıksal tutarlı mı?)'].map((criterion, criterionIdx) => {
-                            const fieldName = `abstract${start + index + 1}-${idx + 1}-criterion${criterionIdx + 1}`;
+                            const fieldName = `abstract${start + index + 1}-model${idx + 1}-criterion${criterionIdx + 1}`;
                             const savedValue = evaluationData[fieldName] || ""; 
                             return `
                                 <div>
