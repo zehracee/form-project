@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
         abstracts.forEach((abstract, abstractIndex) => {
             abstract.models.forEach((_, modelIndex) => {
                 for (let criterionIndex = 1; criterionIndex <= 4; criterionIndex++) {
-                    const fieldName = `abstract${abstractIndex + 1}-${modelIndex + 1}-criterion${criterionIndex}`;
+                    const fieldName = `abstract${abstractIndex + 1}-model${modelIndex + 1}-criterion${criterionIndex}`;
                     requiredFields.push(fieldName);
                 }
             });
