@@ -100,6 +100,7 @@ const abstracts = [
  
 ];
 
+
 const itemsPerPage = 10;
 let currentPage = 1;
 let evaluationData = {};
@@ -120,8 +121,11 @@ function loadPage(page) {
                 <div class="form-section">
                     <h2><span class="model">Model ${idx + 1} Tahmini: </span> ${model}</h2>
                     <div class="criteria-grid">
-                        ${['Netlik', 'Akıcılık', 'Bağlamsal İlgi', 'Tutarlılık'].map((criterion, criterionIdx) => {
-                            const fieldName = `abstract${start + index + 1}-model${idx + 1}-criterion${criterionIdx + 1}`;
+                        ${['Netlik (Modelin verdiği cevabın ne kadar anlaşılır olduğunu ölçer)', 
+                          'Akıcılık (Modelin verdiği cevabın dilbilgisi kurallarına uygunluğunu ölçer)', 
+                          'Bağlamsal İlgi (Modelin uygun cevap üretip üretmediğini ölçer)', 
+                          'Tutarlılık (Modelin cevabı mantıksal tutarlı mı?)'].map((criterion, criterionIdx) => {
+                            const fieldName = `abstract${start + index + 1}-${idx + 1}-criterion${criterionIdx + 1}`;
                             const savedValue = evaluationData[fieldName] || ""; 
                             return `
                                 <div>
@@ -140,7 +144,7 @@ function loadPage(page) {
             `).join("")}
         `;
 
-        // Değişiklikleri kaydet
+        
         abstractDiv.querySelectorAll("select").forEach(select => {
             select.addEventListener("change", (e) => {
                 evaluationData[e.target.name] = e.target.value;
@@ -149,62 +153,43 @@ function loadPage(page) {
 
         container.appendChild(abstractDiv);
     });
-
-    document.getElementById("page-info").innerText = `Sayfa ${page}`;
-    document.getElementById("prev").disabled = page === 1;
-    document.getElementById("next").disabled = page * itemsPerPage >= abstracts.length;
-}
-
-
-function validateSelections() {
-    let allSelectionsMade = true;
-
-    abstracts.forEach((abstract, abstractIdx) => {
-        abstract.models.forEach((model, modelIdx) => {
-            for (let criterionIdx = 1; criterionIdx <= 4; criterionIdx++) {
-                const fieldName = `abstract${abstractIdx + 1}-model${modelIdx + 1}-criterion${criterionIdx}`;
-                if (!evaluationData[fieldName]) {
-                    allSelectionsMade = false;
-                }
-            }
-        });
-    });
-
-    return allSelectionsMade;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Önceki ve sonraki sayfa kontrolleri
-    document.getElementById("prev").addEventListener("click", () => {
-        if (currentPage > 1) {
-            currentPage--;
-            loadPage(currentPage);
-        }
-    });
-
-    document.getElementById("next").addEventListener("click", () => {
-        if (currentPage * itemsPerPage < abstracts.length) {
-            currentPage++;
-            loadPage(currentPage);
-        }
-    });
-
     document.getElementById("submit-btn").addEventListener("click", () => {
         const username = document.getElementById("username").value;
+
+      
         if (!username) {
             alert("Lütfen kullanıcı adını giriniz.");
             return;
         }
 
-        if (!validateSelections()) {
-            alert("Lütfen tüm kriterler için seçim yapınız.");
+      
+        const requiredFields = [];
+        abstracts.forEach((abstract, abstractIndex) => {
+            abstract.models.forEach((_, modelIndex) => {
+                for (let criterionIndex = 1; criterionIndex <= 4; criterionIndex++) {
+                    const fieldName = `abstract${abstractIndex + 1}-${modelIndex + 1}-criterion${criterionIndex}`;
+                    requiredFields.push(fieldName);
+                }
+            });
+        });
+
+      
+        const missingFields = requiredFields.filter(field => !(field in evaluationData && evaluationData[field]));
+
+        if (missingFields.length > 0) {
+            alert("Tüm seçimleri yapmanız gerekiyor. Lütfen eksik alanları tamamlayın.");
             return;
         }
 
+        // Kullanıcı adını evaluationData'ya ekle
         evaluationData.username = username;
 
         console.log("Gönderilen Veriler:", evaluationData);
 
+        // Verileri Formspree'ye gönder
         fetch("https://formspree.io/f/mvgollgq", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -222,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Bir hata oluştu, lütfen tekrar deneyin.");
         });
     });
-
-    loadPage(currentPage);
 });
 
+
+loadPage(currentPage);
