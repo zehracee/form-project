@@ -164,7 +164,6 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Lütfen kullanıcı adını giriniz.");
             return;
         }
-
       
         const requiredFields = [];
         abstracts.forEach((abstract, abstractIndex) => {
@@ -184,12 +183,12 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Kullanıcı adını evaluationData'ya ekle
+        
         evaluationData.username = username;
 
         console.log("Gönderilen Veriler:", evaluationData);
 
-        // Verileri Formspree'ye gönder
+        
         fetch("https://formspree.io/f/mvgollgq", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
