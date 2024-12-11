@@ -26,9 +26,15 @@
             </div>
             <div class="form-section">
                 <label for="title"><b>Unvan</b></label>
-                <input type="text" id="title" name="title" required>
+                <select id="title" name="title" required>
+                    <option value="" disabled selected>Seçiniz</option>
+                    <option value="Prof.">Prof.</option>
+                    <option value="Associate Professor">Associate Professor</option>
+                    <option value="Assistant Professor">Assistant Professor</option>
+                    <option value="Phd">Phd</option>
+                </select>
             </div>
-      
+                  
             <!-- Abstract Listesi -->
             <div id="abstract-container">
                 <!-- JavaScript ile abstract'lar buraya yüklenecek -->
