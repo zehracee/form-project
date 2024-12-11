@@ -158,10 +158,11 @@ function loadPage(page) {
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("submit-btn").addEventListener("click", () => {
         const username = document.getElementById("username").value;
+        const title = document.getElementById("title").value;
 
       
-        if (!username) {
-            alert("Lütfen kullanıcı adını giriniz.");
+        if (!username || !title) {
+            alert("Lütfen kullanıcı adınızı ve unvanınızı giriniz.");
             return;
         }
       
@@ -185,6 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         
         evaluationData.username = username;
+        evaluationData.title = title;
 
         console.log("Gönderilen Veriler:", evaluationData);
 
