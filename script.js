@@ -49,12 +49,12 @@ const abstracts = [
     },
  
   {
-        abstract: "In the study carried out in line with the stated purposes, monthly rain, humidity and temperature data, wheat production amount, and wheat productivity data of Konya province between 1980-2020 were used. Using these data, wheat productivity estimation was performed with (Gated Recurrent Units) GRU and Long Short Term Memory (LSTM) methods, which are Recurrent Neural Network (RNN) based algorithms. When wheat productivity estimation performance was examined with the implemented GRU-based model, 0.9550, 0.0059, 0.0280, 0.0623, 7.45 values were obtained for the R2 score, MSE, RMSE, MAE and MAPE values, respectively. In the performance results obtained with the LSTM method, which is another RNN-based method, 0.9667, 0.0054, 0.0280, 0.0614, 7.33 values were obtained for the R2 score, MSE, RMSE, MAE and MAPE values, respectively. Although the LSTM method gave better results than the GRU method, the training modelling time of the LSTM method took longer than that of the GRU method.",
+        abstract: "With the rapid advancement of technology, artificial intelligence (AI) is increasingly used in various sectors like education, health, security, and defense. A critical application of AI is in highway management, especially with the rise of autonomous vehicles. The focus of this study is to address the issue of deformations in highway marking lines, which pose challenges for autonomous vehicles and impact traffic safety. The research involves using an unmanned aerial vehicle (UAV) to create an original image dataset of highway lines. This dataset will undergo processing with image enhancement techniques and deep learning models. The initial phase involves cleaning the images of impurities. Subsequently, deep learning models will identify potential line deformations. These models will be refined and trained for optimal accuracy using various performance metrics. The final goal is to implement a real-time system, combining the UAV with a ground computer system, to accurately detect and report any discrepancies in highway lines. This will ensure timely notification to authorities, helping prevent traffic safety issues related to line deformations. This approach demonstrates the practical applications of AI in enhancing road safety and autonomous vehicle navigation.",
         models: [
-            "Long Short-Term Memory (LSTM) vs. Gated Recurrent Unit (GRU) for Forecasting Wheat Productivity in Konya Province, Turkey (1980-2020)",
-            "Comparative Analysis of GRU and LSTM Models for Wheat Productivity Estimation Using Climatic Data",
-            "Wheat Productivity Estimation in Konya Using GRU and LSTM Neural Networks (1980-2020)",
-            "Evaluating Wheat Productivity Estimation Using GRU and LSTM Methods in Konya Province, Turkey (1980-2020)"
+            "Enhancing Highway Safety with AI: Real-Time Detection of Line Deformations via UAV-Based Image Analysis",
+            "Leveraging UAV Imagery and Deep Learning for Real-Time Detection of Highway Line Deformations",
+            "AI-Driven UAV System for Real-Time Detection of Highway Line Deformations",
+            "Enhancing Highway Safety with AI-Powered Line Deformation Detection using UAV Imagery and Deep Learning"
         ]
     },
  
