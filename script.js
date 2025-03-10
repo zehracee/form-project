@@ -119,7 +119,7 @@ function loadPage(page) {
             <p class="abstract"><b>Abstract ${start + index + 1}:</b> ${item.abstract}</p>
             ${item.models.map((model, idx) => `
                 <div class="form-section">
-                    <h2><span class="model">Model ${idx + 1} Tahmini: </span> ${model}</h2>
+                    <h2><span class="model">Model ${idx + 1} Prediction: </span> ${model}</h2>
                     <div class="criteria-grid">
                         ${['Clarity (Measures how understandable the response provided by the model)', 
                           'Fluency (Measures the grammatical correctness of the response provided by the model)', 
