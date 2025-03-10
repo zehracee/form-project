@@ -121,10 +121,10 @@ function loadPage(page) {
                 <div class="form-section">
                     <h2><span class="model">Model ${idx + 1} Tahmini: </span> ${model}</h2>
                     <div class="criteria-grid">
-                        ${['Netlik (Modelin verdiği cevabın ne kadar anlaşılır olduğunu ölçer)', 
-                          'Akıcılık (Modelin verdiği cevabın dilbilgisi kurallarına uygunluğunu ölçer)', 
-                          'Bağlamsal İlgi (Modelin uygun cevap üretip üretmediğini ölçer)', 
-                          'Tutarlılık (Modelin cevabı mantıksal tutarlı mı?)'].map((criterion, criterionIdx) => {
+                        ${['Clarity (Measures how understandable the response provided by the model)', 
+                          'Fluency (Measures the grammatical correctness of the response provided by the model)', 
+                          'Contextual Relevance (Measures whether the model produces an appropriate response)', 
+                          'Consistency (Measures whether the response provided by the model is logically consistent)'].map((criterion, criterionIdx) => {
                             const fieldName = `abstract${start + index + 1}-model${idx + 1}-criterion${criterionIdx + 1}`;
                             const savedValue = evaluationData[fieldName] || ""; 
                             return `
