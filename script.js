@@ -131,7 +131,7 @@ function loadPage(page) {
                                 <div>
                                     <label for="${fieldName}">${criterion}</label>
                                     <select id="${fieldName}" name="${fieldName}" required>
-                                        <option value="" disabled ${!savedValue ? "selected" : ""}>Seçiniz</option>
+                                        <option value="" disabled ${!savedValue ? "selected" : ""}>Select</option>
                                         ${[1, 2, 3, 4, 5].map(option => `
                                             <option value="${option}" ${savedValue == option ? "selected" : ""}>${option}</option>
                                         `).join("")}
