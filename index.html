@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Başlık Değerlendirme Formu</title>
+    <title>Title Evaluation Form</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Abstract Bilgisi ile LLM Tarafından Tahmin Edilen Başlıkların Değerlendirilmesi</h1>
+        <h1>Evaluation of Titles Predicted by LLM Using Abstract Information</h1>
         <p class="abstract-description">
-            LLM modellerinin özeti kullanarak başlık üretmesindeki başarısını ölçmek amaçlı kullanılacaktır. 
-            Okuyacağınız Türkçe ve İngilizce özetlere göre 4 farklı modelle oluşturulmuş seçenekler mevcuttur. 
-            Bu seçenekleri netlik, akıcılık, ilgililik  ve tutarlılık doğrultusunda değerlendirmenizi talep ediyoruz. 
-            Değerlendirme 1 ile 5 arasında olup 1- en düşük 5- en yüksek puanı ifade eder. 
-            Katkılarınız ve değerli tecrübelerinizi bizimle paylaştığınız için teşekkür ederiz.
+           This will be used to measure the success of LLM models in generating titles based on abstracts.
+           There are four different options created by four distinct models, based on the Turkish and English abstracts you will read.
+           We kindly ask you to evaluate these options in terms of clarity, fluency, relevance, and consistency. 
+           The evaluation scale ranges from 1 to 5, with 1 being the lowest and 5 being the highest score.
+           We thank you for sharing your contributions and valuable experiences with us.
         </p>
 
         <!-- Form Başlangıcı -->
         <form id="evaluation-form">
             
             <div class="form-section">
-                <label for="username"><b>Kullanıcı Adı</b></label>
-                <input type="text" id="username" name="username" required placeholder="Adınızı giriniz">
+                <label for="username"><b>Username </b></label>
+                <input type="text" id="username" name="username" required placeholder="Enter Your Name">
             </div>
             <div class="form-section">
-                <label for="title"><b>Unvan</b></label>
+                <label for="title"><b>Title</b></label>
                 <select id="title" name="title" required>
-                    <option value="" disabled selected>Seçiniz</option>
+                    <option value="" disabled selected>Select</option>
                     <option value="Prof.">Prof.</option>
                     <option value="Associate Professor">Associate Professor</option>
                     <option value="Assistant Professor">Assistant Professor</option>
@@ -41,7 +41,7 @@
             </div>
 
              <!-- Form Gönder Butonu -->
-            <button type="button" id="submit-btn">Gönder</button>
+            <button type="button" id="submit-btn">Submit</button>
         </form>
     </div>
 
